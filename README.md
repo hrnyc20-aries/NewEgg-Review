@@ -1,2 +1,2 @@
-# NewEgg-Q-A
-Mock Q&amp;A component of newegg.com
+# NewEgg-Review
+Mock Review component of newegg.com
