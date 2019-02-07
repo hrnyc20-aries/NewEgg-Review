@@ -1,12 +1,12 @@
 const faker = require('faker');
 
 module.exports = {
-    author: faker.name.findName(),
-    body: faker.lorem.paragraph(),
-    pros: faker.lorem.sentence(),
-    cons: faker.lorem.sentence(),
-    title: faker.lorem.words(),
-    date: faker.date.recent(),
+    author: () => faker.name.findName(),
+    body: () => faker.lorem.paragraph(),
+    pros: () => faker.lorem.sentence(),
+    cons: () => faker.lorem.sentence(),
+    title: () => faker.lorem.words(),
+    date: () => faker.date.recent(),
     verified: () => {
         let value = Math.floor(Math.random() * 2)
         if (value === 0) {
@@ -14,6 +14,6 @@ module.exports = {
         }
         return 'T'
         },
-    item_id: Math.floor(Math.random() * 100),
-    eggs: Math.floor(Math.random() * (6));
+    item_id: (max) => (Math.floor(Math.random() * max)),
+    eggs: (max) => (Math.floor(Math.random() * max))
 }
