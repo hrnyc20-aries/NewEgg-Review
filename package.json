@@ -1,9 +1,8 @@
 {
-  "name": "",
-  "version": "",
-  "description": "",
+  "name": "newegg-review",
+  "description": "Mock Review component of newegg.com",
   "author": "",
-  "license": "",
+  "license": "ISC",
   "engines": {
     "node": ">=6.13.0"
   },
@@ -19,6 +18,16 @@
     "webpack": "^4.29.2"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
-  }
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git"
+  },
+  "version": "1.0.0",
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmaziad/NewEgg-Review.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dmaziad/NewEgg-Review/issues"
+  },
+  "homepage": "https://github.com/dmaziad/NewEgg-Review#readme"
 }
