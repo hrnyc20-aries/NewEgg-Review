@@ -6,7 +6,7 @@ module.exports = {
     pros: () => faker.lorem.sentence(),
     cons: () => faker.lorem.sentence(),
     title: () => faker.lorem.words(),
-    date: () => faker.date.recent(),
+    date: (n) => JSON.stringify(faker.date.recent(n)).replace(/"/g, ''),
     verified: () => {
         let value = Math.floor(Math.random() * 2)
         if (value === 0) {
