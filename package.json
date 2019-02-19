@@ -6,7 +6,11 @@
   "engines": {
     "node": ">=6.13.0"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "mocha",
+    "react-dev": "webpack -d --watch",
+    "server-dev": "nodemon server/index.js"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
@@ -14,16 +18,28 @@
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "jquery": "^3.3.1",
-    "mocha": "^5.2.0",
-    "react": "^16.8.1",
-    "sqlite3": "^4.0.6",
-    "webpack": "^4.29.2"
+    "react": "^16.8.2",
+    "react-dom": "^16.8.2",
+    "sqlite3": "^4.0.6"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git"
+    "babel": "^6.23.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
+    "mocha": "^5.2.0",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
   },
   "version": "1.0.0",
-  "main": ".eslintrc.js",
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dmaziad/NewEgg-Review.git"
