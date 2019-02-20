@@ -22,14 +22,14 @@ db.serialize(function() {
 
     let stmt = db.prepare("INSERT INTO reviews(item_id,title,pros,\
     cons,body,verified,date,eggs,author) VALUES (?,?,?,?,?,?,?,?,?)")
-    for (let i = 0; i < 400; i++) {
-        if ((i % 3 === 0 && i > 40) || (i % 2 === 0 && i > 240)) {
-            stmt.run(generator.item_id(100), generator.title(),
+    for (let i = 0; i < 500; i++) {
+        if ((i % 3 === 0 && i > 60) || (i % 2 === 0 && i > 400)) {
+            stmt.run(generator.item_id(99), generator.title(),
             generator.pros(), generator.cons(), generator.body(), "F",
             generator.date(1000), generator.eggs(6),
             "Anonymous");
         } else {
-        stmt.run(generator.item_id(100), generator.title(),
+        stmt.run(generator.item_id(99), generator.title(),
         generator.pros(), generator.cons(), generator.body(),
         generator.verified(), generator.date(1000),
         generator.eggs(6), generator.author())
@@ -42,4 +42,4 @@ db.serialize(function() {
     });
 });
 
-// db.close();
+db.close();
