@@ -7,28 +7,78 @@ class Overview extends React.Component {
 
     render() {
         return (
-            <div className="review_overview">
-            <h1> Customer Reviews of This Item</h1>
-            <ul>
-                <li>5 Eggs: {this.props.reviews.filter((review) => {
-                    return review.eggs === 5
-                }).length / this.props.reviews.length * 100}%</li>
-                <li>4 Eggs: {this.props.reviews.filter((review) => {
-                    return review.eggs === 4
-                }).length}/{this.props.reviews.length}</li>
-                <li>3 Eggs: {this.props.reviews.filter((review) => {
-                    return review.eggs === 3
-                }).length}/{this.props.reviews.length}</li>
-                <li>2 Eggs: {this.props.reviews.filter((review) => {
-                    return review.eggs === 2
-                }).length}/{this.props.reviews.length}</li>
-                <li>1 Eggs: {this.props.reviews.filter((review) => {
-                    return review.eggs === 1
-                }).length}/{this.props.reviews.length}</li>
-                <li>0 Eggs: {this.props.reviews.filter((review) => {
-                    return review.eggs === 0
-                }).length}/{this.props.reviews.length}</li>
-            </ul>
+            <div className="reviewOverview">
+            <h2 className="sectionTitle"> Customer Reviews of This Item</h2>
+                <div className="ratingView">
+                    <div className="ratingName">5 egg</div>
+                    <div className="ratingChart">
+                        <div className="ratingChart_current"></div>
+                        <div className="ratingNumber">{this.props.reviews.filter((review) => {
+                            return review.eggs === 5
+                        }).length}
+                        </div>
+                    </div>
+                    <div className="ratingPercent"> {this.props.reviews.filter((review) => {
+                        return review.eggs === 5
+                    }).length / this.props.reviews.length * 100}%
+                    </div>
+                </div>
+                <div className="ratingView">
+                    <div className="ratingName">4 egg</div>
+                    <div className="ratingChart">
+                        <div className="ratingChart_current"></div>
+                        <div className="ratingNumber">{this.props.reviews.filter((review) => {
+                            return review.eggs === 4
+                        }).length}
+                        </div>
+                    </div>
+                    <div className="ratingPercent"> {this.props.reviews.filter((review) => {
+                        return review.eggs === 4
+                    }).length / this.props.reviews.length * 100}%
+                    </div>
+                </div>
+                <div className="ratingView">
+                    <div className="ratingName">3 egg</div>
+                    <div className="ratingChart">
+                        <div className="ratingChart_current"></div>
+                        <div className="ratingNumber">{this.props.reviews.filter((review) => {
+                            return review.eggs === 3
+                        }).length}
+                        </div>
+                    </div>
+                    <div className="ratingPercent"> {this.props.reviews.filter((review) => {
+                        return review.eggs === 3
+                    }).length / this.props.reviews.length * 100}%
+                    </div>
+                </div>
+                <div className="ratingView">
+                    <div className="ratingName">2 egg</div>
+                    <div className="ratingChart">
+                        <div className="ratingChart_current"></div>
+                        <div className="ratingNumber">{this.props.reviews.filter((review) => {
+                            return review.eggs === 2
+                        }).length}
+                        </div>
+                    </div>
+                    <div className="ratingPercent"> {this.props.reviews.filter((review) => {
+                        return review.eggs === 2
+                    }).length / this.props.reviews.length * 100}%
+                    </div>
+                </div>
+                <div className="ratingView">
+                    <div className="ratingName">1 egg</div>
+                    <div className="ratingChart">
+                        <div className="ratingChart_current"></div>
+                        <div className="ratingNumber">{this.props.reviews.filter((review) => {
+                            return review.eggs === 1
+                        }).length}
+                        </div>
+                    </div>
+                    <div className="ratingPercent"> {this.props.reviews.filter((review) => {
+                        return review.eggs === 1
+                    }).length / this.props.reviews.length * 100}%
+                    </div>
+                </div>
             </div>
         )
     }
