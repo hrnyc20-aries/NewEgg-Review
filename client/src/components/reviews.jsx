@@ -18,15 +18,17 @@ class Reviews extends React.Component {
                                 <div className="author">{review.author}</div>
                             </div>
                             <div className="reviewBody">
-                                <span className="rating">Rating: {review.eggs}</span>
-                                <br/>
-                                <span className="reviewTitle">{review.title}</span>
+                                <div className="reviewHead">
+                                    <span className="rating">Rating: {review.eggs}</span>
+                                    <span className="reviewTitle">{review.title}</span>
+                                    <span className="reviewDate">{review.date}</span>
+                                </div>
                                 <div className="reviewContent">
-                                    <span className="pros">Pros: {review.pros}</span>
+                                    <span className="pros"><strong>Pros:</strong> {review.pros}</span>
                                     <br/>
-                                    <span className="cons">Cons: {review.cons}</span>
+                                    <span className="cons"><strong>Cons:</strong> {review.cons}</span>
                                     <br/>
-                                    <span className="reviewBody">Other thoughts: {review.body}</span>
+                                    <span className="reviewBody"><strong>Other thoughts:</strong> {review.body}</span>
                                 </div>
                             </div>
                                 <div className="poll">

@@ -4,21 +4,17 @@ const sqlite3 = require('sqlite3');
 const path = require('path')
 
 const app = express();
-const port = 3009;
+const port = process.env.PORT || 3009;
 const router = express.Router();
 
 const dbPath = path.resolve(__dirname, '../database/reviewdb.db') 
-console.log(dbPath);
-let db = new sqlite3.Database(dbPath, (err) => {
-    console.error(err);
-});
+let db = new sqlite3.Database(dbPath);
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 app.use('/', router);
 
 router.get('/reviews/:item_id', (req, res) => {
-    console.log(req.params);
     db.all('SELECT * FROM reviews WHERE item_id=(?)', [req.params.item_id], (err, row) => {
         if (err) {
             console.error('ERROR occurred while retrieving reviews')
