@@ -14,7 +14,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 app.use('/', router);
 
-router.get('/reviews/:item_id', (req, res) => {
+app.get('/reviews/:item_id', (req, res) => {
     db.all('SELECT * FROM reviews WHERE item_id=(?)', [req.params.item_id], (err, row) => {
         if (err) {
             console.error('ERROR occurred while retrieving reviews')
@@ -23,7 +23,7 @@ router.get('/reviews/:item_id', (req, res) => {
     })
 });
 
-router.post('/reviews', (req, res) => {
+app.post('/reviews', (req, res) => {
     let newPost = req.body;
     let stmt = db.prepare('INSERT INTO reviews (item_id, title, pros,\
     cons,body,verified,date,eggs,author) VALUES (?,?,?,?,?,?,?,?,?)');
@@ -34,7 +34,7 @@ router.post('/reviews', (req, res) => {
     res.send(201);
 });
 
-router.patch('/reviews', (req, res) => {
+app.patch('/reviews', (req, res) => {
     let newPost = req.body;
     if (req.body.helpful === true) {
         let stmt = db.prepare('UPDATE reviews SET helpful = helpful + 1 WHERE id = ?');
