@@ -13,7 +13,7 @@ let db = new sqlite3.Database(dbPath);
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
+app.get('/:id', (req, res) => {
     res.sendFile(path.join(__dirname + '/../client/dist/index.html'))
 });
 

@@ -17,9 +17,10 @@ class App extends React.Component {
         this.getReviews = this.getReviews.bind(this);
         this.voteHelpful = this.voteHelpful.bind(this);
         this.voteNotHelpful = this.voteNotHelpful.bind(this);
-        this.changeItem = this.changeItem.bind(this);
+        // this.changeItem = this.changeItem.bind(this);
         this.renderView = this.renderView.bind(this);
         this.changeView = this.changeView.bind(this);
+        this.getItemByUrl = this.getItemByUrl.bind(this);
     }
 
     getReviews() {
@@ -43,13 +44,20 @@ class App extends React.Component {
         this.getReviews();
     }
 
-    changeItem(itemId) {
-        this.setState({currentItem: itemId});
-        getReviews();
+    getItemByUrl() {
+        let item = window.location.href.split('/')[3] || 1;
+        this.setState({currentItem: item}, () => {
+            this.getReviews();
+        });
     }
 
+    // changeItem(itemId) {        
+    //     this.setState({currentItem: itemId});
+    //     this.getReviews();
+    // }
+
     componentDidMount() {
-        this.getReviews();
+        this.getItemByUrl();
     }
 
     changeView(newView) {
