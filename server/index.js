@@ -14,7 +14,7 @@ app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
-    res.SendFile(path.join(__dirname + '/../client/dist/index.html'))
+    res.sendFile(path.join(__dirname + '/../client/dist/index.html'))
 });
 
 app.get('/reviews/:item_id', (req, res) => {
