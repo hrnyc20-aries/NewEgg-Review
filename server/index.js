@@ -12,7 +12,14 @@ let db = new sqlite3.Database(dbPath);
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
-app.use('/', router);
+app.use('/', (req, res) => {
+    db.all('SELECT * FROM reviews WHERE item_id=1', (err, row) => {
+        if (err) {
+            console.error('ERROR occurred while retrieving reviews')
+        }
+        res.send(200, row);
+    })
+});
 
 app.get('/reviews/:item_id', (req, res) => {
     db.all('SELECT * FROM reviews WHERE item_id=(?)', [req.params.item_id], (err, row) => {
