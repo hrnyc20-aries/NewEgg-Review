@@ -4,7 +4,7 @@ const sqlite3 = require('sqlite3');
 const path = require('path')
 
 const app = express();
-const port = 3009;
+const port = process.env.PORT || 3009;
 const router = express.Router();
 
 const dbPath = path.resolve(__dirname, '../database/reviewdb.db') 

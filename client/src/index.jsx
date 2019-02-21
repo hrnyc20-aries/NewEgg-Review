@@ -79,31 +79,36 @@ class App extends React.Component {
                     <span className={this.state.view === 'overview'
                         ? 'nav_selected'
                         : 'nav_unselected'}
-                        onClick={() => this.changeView('overview')}>
+                        onClick={() => this.changeView('overview')}
+                        id="overview">
                         <span className="nav_title">Overview</span>
                         </span>
                     <span className={this.state.view === 'specs'
                         ? 'nav_selected'
                         : 'nav_unselected'}
-                        onClick={() => this.changeView('specs')}>
+                        onClick={() => this.changeView('specs')}
+                        id="specs">
                         <span className="nav_title">Specifications</span>
                         </span>
                     <span className={this.state.view === 'warranty'
                         ? 'nav_selected'
                         : 'nav_unselected'}
-                        onClick={() => this.changeView('warranty')}>
+                        onClick={() => this.changeView('warranty')}
+                        id="warranty">
                         <span className="nav_title">Warranty & Returns</span>
                         </span>
                     <span className={this.state.view === 'reviews'
                         ? 'nav_selected'
                         : 'nav_unselected'}
-                        onClick={() => this.changeView('reviews')}>
+                        onClick={() => this.changeView('reviews')}
+                        id="reviews">
                         <span className="nav_title">Reviews</span>
                         </span>
                     <span className={this.state.view === 'questions'
                         ? 'nav_selected'
                         : 'nav_unselected'}
-                        onClick={() => this.changeView('questions')}>
+                        onClick={() => this.changeView('questions')}
+                        id="questions">
                         <span className="nav_title">Q&A</span>
                         </span>
                 </div>
