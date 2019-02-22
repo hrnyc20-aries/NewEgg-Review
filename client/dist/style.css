@@ -9,8 +9,7 @@ body {
 }
 
 .reviewApp {
-    position: absolute;
-    bottom: 0;
+    display: block;
 }
 
 /* .main {
