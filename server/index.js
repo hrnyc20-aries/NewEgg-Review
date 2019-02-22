@@ -6,10 +6,12 @@ const path = require('path')
 const app = express();
 const port = process.env.PORT || 3009;
 const router = express.Router();
+const cors = require('cors');
 
 const dbPath = path.resolve(__dirname, '../database/reviewdb.db') 
 let db = new sqlite3.Database(dbPath);
 
+app.use(cors());
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 
