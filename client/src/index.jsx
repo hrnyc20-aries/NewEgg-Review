@@ -32,16 +32,14 @@ class App extends React.Component {
 
     voteHelpful(review) {
         axios.patch('http://ec2-18-191-191-200.us-east-2.compute.amazonaws.com/reviews', {id: review.id, helpful: true})
-             .then((response) => console.log('Your vote counted!'))
-             .catch((err) => console.error('Could not process vote'))
-        this.getReviews();
+             .then((response) => this.getReviews())
+             .catch((err) => console.error('Could not process vote'));
     }
 
     voteNotHelpful(review) {
         axios.patch('http://ec2-18-191-191-200.us-east-2.compute.amazonaws.com/reviews', {id: review.id, helpful: false})
-             .then((response) => console.log('Your vote counted!'))
+             .then((response) => this.getReviews())
              .catch((err) => console.error('Could not process vote'))
-        this.getReviews();
     }
 
     getItemByUrl() {
