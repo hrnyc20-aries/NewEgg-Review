@@ -25,7 +25,7 @@ class App extends React.Component {
 
     getReviews() {
         let itemId = this.state.currentItem;
-        axios.get(`/reviews/${itemId}`)
+        axios.get(`http://ec2-18-191-191-200.us-east-2.compute.amazonaws.com/reviews/${itemId}`)
              .then((response) => this.setState({reviews: response.data}))
              .catch((err) => console.error('There was a problem getting reviews: ' + err))
     }
