@@ -8,6 +8,11 @@ body {
     border-top-left-radius: 6px;
 }
 
+.reviewApp {
+    position: absolute;
+    bottom: 0;
+}
+
 /* .main {
     width: 75%;
     border-bottom: 1px solid #ccc;
