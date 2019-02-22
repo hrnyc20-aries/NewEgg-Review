@@ -18,10 +18,16 @@ class App extends React.Component {
         this.getReviews = this.getReviews.bind(this);
         this.voteHelpful = this.voteHelpful.bind(this);
         this.voteNotHelpful = this.voteNotHelpful.bind(this);
-        // this.changeItem = this.changeItem.bind(this);
         this.renderView = this.renderView.bind(this);
         this.changeView = this.changeView.bind(this);
         this.getItemByUrl = this.getItemByUrl.bind(this);
+    }
+
+    getItemByUrl() {
+        let item = window.location.href.split('/')[3] || 1;
+        this.setState({currentItem: item}, () => {
+            this.getReviews();
+        });
     }
 
     getReviews() {
@@ -42,18 +48,6 @@ class App extends React.Component {
              .then((response) => this.getReviews())
              .catch((err) => console.error('Could not process vote'))
     }
-
-    getItemByUrl() {
-        let item = window.location.href.split('/')[3] || 1;
-        this.setState({currentItem: item}, () => {
-            this.getReviews();
-        });
-    }
-
-    // changeItem(itemId) {        
-    //     this.setState({currentItem: itemId});
-    //     this.getReviews();
-    // }
 
     componentDidMount() {
         this.getItemByUrl();
@@ -82,7 +76,7 @@ class App extends React.Component {
 
     render() {
         return (
-            <div className="app">
+            <div className="reviewApp">
                 <div className="navbar">
                     <span className={this.state.view === 'overview'
                         ? 'nav_selected'
