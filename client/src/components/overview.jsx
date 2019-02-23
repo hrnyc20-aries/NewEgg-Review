@@ -68,10 +68,11 @@ class Overview extends React.Component {
                 <div className="ratingView">
                     <div className="ratingName">1 egg</div>
                     <div className="ratingChart">
-                        <div className="ratingChart_current"></div>
-                        <div className="ratingNumber">{this.props.reviews.filter((review) => {
-                            return review.eggs === 1
-                        }).length}
+                        <div className="ratingChart_current">
+                            <div className="ratingNumber">{this.props.reviews.filter((review) => {
+                                return review.eggs === 1
+                            }).length}
+                            </div>
                         </div>
                     </div>
                     <div className="ratingPercent"> {this.props.reviews.filter((review) => {
