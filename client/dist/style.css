@@ -13,7 +13,7 @@ body {
 }
 
 .main {
-    width: 75%;
+    /* width: 75%; */
     border: 1px solid #ccc;
     /* border-left: 1px solid #ccc;
     border-right: 1px solid #ccc; */
@@ -23,6 +23,16 @@ body {
     width: 75.85%;
     /* border-bottom: 1px solid #ccc; */
     padding: 7px 7px 7px 0;
+}
+
+.reviewOverview {
+    clear: left;
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 1em 10px 20px;
+    background: #fff;
+    font-size: 13px;
 }
 
 .reviews {
@@ -37,7 +47,7 @@ body {
     justify-content: left;
     align-items: center;
     border-left: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+    /* border-bottom: 1px solid #ccc; */
     background-image: linear-gradient(to top,#e8ecef,#f5f6fb);
     font-size: 13px;
     /* height: 18px; */
@@ -63,6 +73,7 @@ body {
 }
 
 .sectionTitle {
+    color: #4d4d4d;
     padding: .5em 0;
     margin: 0;
     font-size: 1.4em;
@@ -70,16 +81,13 @@ body {
     font-weight: 400;
 }
 
+.reviews {
+    padding: 0 16px;
+}
+
 .review {
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    padding: 10px; 
-/*  margin: 0 0 0 -3px;
-    float: left;
-    width: 75%;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc; */
+    padding: 30px 16px;
     border-bottom: 1px solid #ccc;
 }
 
@@ -90,32 +98,37 @@ body {
 
 .sidebar {
     order: 1;
-    float: left;
-    height: 90%;
-    width: 25%;
+    flex: 1;
 }
 
 .reviewBody {
     order: 2;
-    /* position: relative;
-    display: block; */
+    flex: 3;
+    padding: 0 20px 0 0;
     font-size: 13px;
 }
 
 .author {
-    font-size: 13px;
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.verified {
+    color: #707070;
+    font-size: 12px;
 }
 
 .reviewHead {
     display: flex;
     flex-direction: row;
-    width: 70%;
     /* justify-content: space-between; */
 }
 
 .rating {
     order: 1;
-    padding: 0 10px 0 0;
+    width:59px;
+    height: 13px;
+    padding: 0 10px 5px 0;
     flex-grow: 0;
 }
 
@@ -123,24 +136,39 @@ body {
     order: 2;
     font-weight: bold;
     padding: 0 10px 0 10px;
-    flex-grow: 3;
+    flex-grow: 2;
 }
 
 .reviewDate {
     order: 3;
     padding: 0 0 0 10px;
     float: right;
-    flex-grow: 0;
+    flex-grow: 1;
+}
+
+.ratingBlock {
+    position: relative;
+    padding: 0 0 0 30px;
+    margin-bottom: 20px;
+}
+
+.ratingInner {
+    margin-right: 480px;
+    padding-right: 30px;
+}
+
+.ratingInnerBody {
+    position: relative;
+    float: left;
+    width: 100%;
 }
 
 .ratingView {
-    display: flex;
-    flex-direction: row;
+    display: block;
     position: relative;
-    margin-top: 15px;
+    margin-bottom: 15px;
     height: 22px;
-    width: 50%;
-    padding: 0 10px;
+    cursor: pointer;
 }
 
 
@@ -157,43 +185,60 @@ body {
     border-radius: 3px;
     background: #707070; */
     
-    position: relative;
+    /* position: relative;
     order: 3;
     transform: translateX(-10px);
     width: 50%;
     margin: 0 10px 0 55px;
     overflow: hidden;
     border-radius: 3px;
+    background: #707070; */
+
+    position: relative;
+    margin: 0 40px 0 45px;
+    overflow: hidden;
+    border-radius: 3px;
     background: #707070;
+    height: 100%;
+    box-sizing: border-box;
+    line-height: 22px;
 }
 
 .ratingChart_current {
-    width: 100%;
-    position: relative;
-    background-color: #ff9800;
+    height: inherit;
+    background: #ff9800;
+    transition: width .3s;
 }
 
 .ratingName {
-    display: inline-block;
     position: absolute;
-    order: 1;
-    margin: 0 10px 0 0;
     top: 0;
     left: 0;
+    height: 100%;
+    box-sizing: border-box;
+    line-height: 22px;
 }
 
 .ratingNumber {
-    display: inline-block;
-    order: 3;
     position: absolute;
-    padding: 2px 7px 0 7px;
+    top: 0;
+    left: 0;
+    padding: 0 7px;
+    width: 100%;
+    height: inherit;
+    box-sizing: border-box;
+    overflow: hidden;
     color: #fff;
+    font-weight: 700;
+    text-overflow: ellipsis;
 }
 
 .ratingPercent {
     /* display: inline-block;
     float: right; */
-    order: 4;
+    height: 100%;
+    box-sizing: border-box;
+    line-height: 22px;
 }
 
 .poll {
