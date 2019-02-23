@@ -146,7 +146,7 @@ li {
 .rating {
     order: 1 !important;
     width:59px !important;
-    height: 13px !important;
+    height: 20px !important;
     padding: 0 10px 5px 0 !important;
     flex-grow: 0 !important;
 }

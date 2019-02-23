@@ -97,9 +97,16 @@ class Reviews extends React.Component {
                                     <span className="reviewBody"><strong>Other thoughts:</strong> {review.body}</span>
                                 </div>
                                 <div className="poll">
+                                {this.props.reviewsVotedOn.indexOf(JSON.stringify(review.id)) === -1
+                                ?  (
                                     <span className="rate">{review.helpful} people out of {review.helpful + review.not_helpful} found this review helpful. Did you?
                                     <button className="yes" onClick={(e) => this.props.voteHelpful(e.target)} id={review.id}>Yes</button><button className="no" onClick={(e) => this.props.voteNotHelpful(e.target)} id={review.id}>No</button>
                                     </span>
+                                )
+                                :  (
+                                <span className="voted">Thanks for voting! {review.helpful} people out of {review.helpful + review.not_helpful} found this review helpful.
+                                   </span>
+                                )}
                                 </div>
                             </div>
                         </div>

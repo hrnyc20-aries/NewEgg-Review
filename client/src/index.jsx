@@ -14,7 +14,8 @@ class App extends React.Component {
             view: "reviews",
             reviews: [],
             currentItem: 1,
-            sortBy: "date"
+            sortBy: "date",
+            reviewsVotedOn: []
         };
         this.getReviews = this.getReviews.bind(this);
         this.voteHelpful = this.voteHelpful.bind(this);
@@ -43,12 +44,17 @@ class App extends React.Component {
     }
 
     voteHelpful(review) {
+        let votedItems = this.state.reviewsVotedOn;
+        votedItems.push(review.id)
+        this.setState({reviewsVotedOn: votedItems}, () => {
         axios.patch(`${awsReview}/reviews`, {id: review.id, helpful: true})
              .then((response) => this.getReviews())
              .catch((err) => console.error('Could not process vote'));
+        });
     }
 
     voteNotHelpful(review) {
+        this.setState({reviewsVotedOn: this.state.reviewsVotedOn.push(review.id)});
         axios.patch(`${awsReview}/reviews`, {id: review.id, helpful: false})
              .then((response) => this.getReviews())
              .catch((err) => console.error('Could not process vote'))
@@ -78,6 +84,10 @@ class App extends React.Component {
         this.getItemByUrl();
     }
 
+    // componentWillUnmount() {
+    //     this.setState({reviewsVotedOn: []});
+    // }
+
     changeView(newView) {
         this.setState(
             {view: newView}
@@ -91,7 +101,7 @@ class App extends React.Component {
             return (
                 <React.Fragment>
                     <Overview sortBy={this.setSort} filterByRating={this.ratingFilter}  reviews={this.state.reviews} />
-                    <Reviews voteHelpful={this.voteHelpful} voteNotHelpful={this.voteNotHelpful}
+                    <Reviews voteHelpful={this.voteHelpful} voteNotHelpful={this.voteNotHelpful} reviewsVotedOn={this.state.reviewsVotedOn}
                     reviews={this.state.reviews} />
                 </React.Fragment>
             )
