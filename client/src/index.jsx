@@ -62,27 +62,8 @@ class App extends React.Component {
         if (this.state.sortBy === 'date') {
             this.setState({reviews: this.state.reviews.sort((a, b) => (new Date(b.date) - new Date(a.date)))});
         }
-        if (this.state.sortBy === 'ownership') {
-            this.setState({reviews: this.state.reviews.sort((a, b) => {
-                if (b.verified === 'T' && a.verified === 'F') {
-                    return b;
-                } else {
-                    return a;
-                }
-            })})
-        }
         if (this.state.sortBy === 'helpful') {
-            this.setState({reviews: this.state.reviews.sort((a, b) => {
-                let firstPercent = a.helpful / (a.helpful + a.not_helpful);
-                let secondPercent = b.helpful / (b.helpful + b.not_helpful);
-                if (a.helpful === 0 && a.not_helpful === 0) {
-                    firstPercent = 0.5;
-                } else if (b.helpful && b.not_helpful === 0) {
-                    secondPercent = 0.5;
-                }
-                // console.log('b is: ', b, 'secondPercent is: ', secondPercent, 'a is: ', a, 'firstPercent is: ', firstPercent);
-                return secondPercent - firstPercent;
-            })})
+            this.setState({reviews: this.state.reviews.sort((a, b) => (b.helpful - a.helpful))});
         }
         if (this.state.sortBy === 'highest') {
             this.setState({reviews: this.state.reviews.sort((a, b) => (b.eggs - a.eggs))})

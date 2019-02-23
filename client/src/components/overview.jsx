@@ -87,7 +87,6 @@ class Overview extends React.Component {
                                 <option value="helpful">Most Helpful</option>
                                 <option value="highest">Highest Rated</option>
                                 <option value="lowest">Lowest Rated</option>
-                                <option value="ownership">Ownership</option>
                             </select>
                         </label>
                         <div className="reviewCount">Reviews <strong>1-{this.props.reviews.length}</strong> of <strong>{this.props.reviews.length}</strong></div>

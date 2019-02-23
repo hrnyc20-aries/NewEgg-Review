@@ -26,6 +26,7 @@ li {
 
 .reviewApp {
     display: inline-block;
+    width: 100%;
 }
 
 .main {
@@ -36,7 +37,7 @@ li {
 }
 
 .navbar {
-    width: 75.85%;
+    width: 100%;
     /* border-bottom: 1px solid #ccc; */
     padding: 7px 7px 7px 0;
 }
@@ -371,7 +372,5 @@ li {
 }
 
 .blank {
-    width: 75%;
-    /* border: 1px solid #ccc; */
-    /* border-right: 1px solid #ccc; */
+    padding: 30px;
 }
