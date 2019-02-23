@@ -37,6 +37,7 @@ li {
 }
 
 .navbar {
+    display: block !important;
     width: 100%;
     /* border-bottom: 1px solid #ccc; */
     padding: 7px 7px 7px 0;
@@ -137,32 +138,32 @@ li {
 }
 
 .reviewHead {
-    display: flex;
-    flex-direction: row;
+    display: flex !important;
+    flex-direction: row !important;
     /* justify-content: space-between; */
 }
 
 .rating {
-    order: 1;
-    width:59px;
-    height: 13px;
-    padding: 0 10px 5px 0;
-    flex-grow: 0;
+    order: 1 !important;
+    width:59px !important;
+    height: 13px !important;
+    padding: 0 10px 5px 0 !important;
+    flex-grow: 0 !important;
 }
 
 .reviewTitle {
-    order: 2;
-    font-weight: bold;
-    padding: 0 10px 0 10px;
-    flex-grow: 2;
+    order: 2 !important;
+    font-weight: bold !important;
+    padding: 0 10px 0 10px !important;
+    flex-grow: 2 !important;
 }
 
 .reviewDate {
-    order: 3;
-    align-self: flex-end;
-    padding: 0 0 0 10px;
-    float: right;
-    flex-grow: 1;
+    order: 3 !important;
+    align-self: flex-end !important;
+    padding: 0 0 0 10px !important;
+    float: right !important;
+    flex-grow: 1 !important;
 }
 
 .ratingBlock {
