@@ -2,6 +2,22 @@ body {
     font-family: 'Open Sans',Helvetica,Arial,sans-serif;
 }
 
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+li {
+    margin: 0 0 .5em 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: normal;
+    font-family: inherit;
+    text-decoration: none;
+}
+
 .app {
     margin: 0 0 0 1px;
     border-left: 1px solid #ccc;
@@ -82,11 +98,12 @@ body {
 }
 
 .reviews {
-    padding: 0 16px;
+    padding: 0 16px 10px 16px;
 }
 
 .review {
     display: flex;
+    clear: left;
     padding: 30px 16px;
     border-bottom: 1px solid #ccc;
 }
@@ -141,6 +158,7 @@ body {
 
 .reviewDate {
     order: 3;
+    align-self: flex-end;
     padding: 0 0 0 10px;
     float: right;
     flex-grow: 1;
@@ -167,33 +185,20 @@ body {
     display: block;
     position: relative;
     margin-bottom: 15px;
-    height: 22px;
     cursor: pointer;
+}
+
+.ratingViewLine {
+    display: grid;
+    grid-template-columns: 0 100% 0;
+    grid-template-areas: "name chart percent";
+    grid-column-gap: 0;
 }
 
 
 .ratingChart {
-    /* display: inline-block;
-    background-color: #636669;
-    width: 250px; */
-    
-    /* display: block;
-    width: 50%;
-    position: relative;
-    margin: 10px 0;
-    overflow: hidden;
-    border-radius: 3px;
-    background: #707070; */
-    
-    /* position: relative;
-    order: 3;
-    transform: translateX(-10px);
-    width: 50%;
-    margin: 0 10px 0 55px;
-    overflow: hidden;
-    border-radius: 3px;
-    background: #707070; */
-
+    grid-area: chart;
+    justify-self: stretch;
     position: relative;
     margin: 0 40px 0 45px;
     overflow: hidden;
@@ -211,6 +216,7 @@ body {
 }
 
 .ratingName {
+    grid-area: name;
     position: absolute;
     top: 0;
     left: 0;
@@ -234,11 +240,100 @@ body {
 }
 
 .ratingPercent {
-    /* display: inline-block;
-    float: right; */
+    grid-area: percent;
+    justify-self: end;
     height: 100%;
     box-sizing: border-box;
     line-height: 22px;
+}
+
+.writeReview {
+    display: block;
+    float: right;
+    padding: 0 0 0 30px;
+    width: 240px;
+    box-sizing: border-box;
+}
+
+.filter {
+    display: block;
+    float: right;
+    padding: 0 0 0 30px;
+    width: 240px;
+    box-sizing: border-box;
+}
+
+.filterTitle {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.filterCheckbox {
+    display: inline-block;
+    position: relative;
+    margin-right: 8px;
+    padding-left: 0;
+    box-sizing: border-box;
+    vertical-align: middle;
+    letter-spacing: normal;
+    cursor: pointer;
+}
+
+.form-checkbox input[type=checkbox] {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    opacity: 0;
+    vertical-align: middle;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.toolBar {
+    clear: both;
+
+    padding: 30px 30px;
+    background: #f4f5f7;
+}
+
+.reviewCount {
+    /* display: inline-block; */
+    float: right;
+    vertical-align: middle;
+    padding: 0 10px 0 0;
+}
+
+.form-select {
+    float: right;
+    vertical-align: middle;
+    /* display: inline-block; */
+    position: relative;
+    max-width: 100%;
+    white-space: nowrap;
+    margin-right: 20px;
+}
+
+.form-select>select {
+    position: relative;
+    vertical-align: middle;
+    /* float: left; */
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    /* opacity: 0; */
+    font-size: 13px;
+    box-sizing: border-box;
+    background-color: rgb(248, 248, 248);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(166, 166, 166);
+    border-image: initial;
+    border-radius: 5px;
 }
 
 .poll {
@@ -247,7 +342,7 @@ body {
     /* padding: 10px 0; */
 }
 
-button {
+.yes, .no {
     margin: 10px 5px;
 }
 

@@ -18,7 +18,7 @@ class Overview extends React.Component {
     getNumberOfRatings(num) {
         return (
             this.props.reviews.filter((review) => {
-                            return review.eggs === 5
+                            return review.eggs === num
                         }).length
         )
     }
@@ -28,70 +28,69 @@ class Overview extends React.Component {
             <div className="reviewOverview">
             <h2 className="sectionTitle"> Customer Reviews of This Item</h2>
                 <div className="ratingBlock">
+                    <div className="writeReview">
+                        <div className="comment">
+                            <div className="commentTitle">Do you own this product?</div>
+                            <button className="writeReviewButton">Write a Review</button>
+                        </div>
+                    </div>
+                    <div className="filter">
+                        <div className="filterTitle">Filter Results</div>
+                        <ul className="filterOptions">
+                            <li>
+                                <label className="filterCheckbox">
+                                    <input type="checkbox" onClick={() => this.handleFilter(this.target)} />
+                                    <span className="checkboxTitle">Related</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label className="filterCheckbox">
+                                    <input type="checkbox" onClick={() => this.handleFilter(this.target)} />
+                                    <span className="checkboxTitle">Verified Owners</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label className="filterCheckbox">
+                                    <input type="checkbox" onClick={() => this.handleFilter(this.target)} />
+                                    <span className="checkboxTitle">Mfr. Responses</span>
+                                </label>
+                            </li>
+                        </ul>
+                    </div>
                     <div className="ratingInner">
                         <div className="ratingInnerBody">
-                        <div className="ratingView">
-                            <div className="ratingName">5 egg</div>
-                            <div className="ratingChart">
-                                <div className="ratingChart_current" style={{width: `${this.getPercent(5)}%`}}></div>
-                                <div className="ratingNumber">{this.getNumberOfRatings(5)}
+                        {[5, 4, 3, 2, 1].map((eggCount) => {
+                            return (
+                        <div className="ratingView" key={'key' + eggCount}>
+                            <div className="ratingViewLine">
+                                <div className="ratingName">{eggCount} egg</div>
+                                <div className="ratingChart">
+                                    <div className="ratingChart_current" style={{width: `${this.getPercent(eggCount)}%`}}></div>
+                                    <div className="ratingNumber">{this.getNumberOfRatings(eggCount)}
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="ratingPercent"> {Math.round(this.getPercent(5))}%
+                                <div className="ratingPercent"> {Math.round(this.getPercent(eggCount))}%
+                                </div>
                             </div>
                         </div>
-                        <div className="ratingView">
-                            <div className="ratingName">4 egg</div>
-                            <div className="ratingChart">
-                                <div className="ratingChart_current" style={{width: `${this.getPercent(4)}%`}}></div>
-                                <div className="ratingNumber">{this.props.reviews.filter((review) => {
-                                    return review.eggs === 4
-                                }).length}
-                                </div>
-                            </div>
-                            <div className="ratingPercent"> {Math.round(this.getPercent(4))}%
-                            </div>
-                        </div>
-                        <div className="ratingView">
-                            <div className="ratingName">3 egg</div>
-                            <div className="ratingChart">
-                                <div className="ratingChart_current" style={{width: `${this.getPercent(3)}%`}}></div>
-                                <div className="ratingNumber">{this.props.reviews.filter((review) => {
-                                    return review.eggs === 3
-                                }).length}
-                                </div>
-                            </div>
-                            <div className="ratingPercent"> {Math.round(this.getPercent(3))}%
-                            </div>
-                        </div>
-                        <div className="ratingView">
-                            <div className="ratingName">2 egg</div>
-                            <div className="ratingChart">
-                                <div className="ratingChart_current" style={{width: `${this.getPercent(2)}%`}}></div>
-                                <div className="ratingNumber">{this.props.reviews.filter((review) => {
-                                    return review.eggs === 2
-                                }).length}
-                                </div>
-                            </div>
-                            <div className="ratingPercent"> {Math.round(this.getPercent(2))}%
-                            </div>
-                        </div>
-                        <div className="ratingView">
-                            <div className="ratingName">1 egg</div>
-                            <div className="ratingChart">
-                                <div className="ratingChart_current" style={{width: `${this.getPercent(1)}%`}}>
-                                </div>
-                                <div className="ratingNumber">{this.props.reviews.filter((review) => {
-                                    return review.eggs === 1
-                                }).length}
-                                </div>
-                            </div>
-                            <div className="ratingPercent"> {Math.round(this.getPercent(1))}%
-                            </div>
-
-                        </div>
+                            )
+                        })}
                         </div>
 
+                    </div>
+                </div>
+                <div className="toolBar">
+                    <div className="sortTool">
+                        <label className="form-select">
+                            <select id="order" onChange={(e) => this.props.sortBy(e.target.value)}>
+                                <option value="date">Date Posted</option>
+                                <option value="helpful">Most Helpful</option>
+                                <option value="highest">Highest Rated</option>
+                                <option value="lowest">Lowest Rated</option>
+                                <option value="ownership">Ownership</option>
+                            </select>
+                        </label>
+                        <div className="reviewCount">Reviews <strong>1-{this.props.reviews.length}</strong> of <strong>{this.props.reviews.length}</strong></div>
                     </div>
                 </div>
             </div>

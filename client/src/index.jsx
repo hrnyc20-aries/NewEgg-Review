@@ -13,7 +13,8 @@ class App extends React.Component {
         this.state = {
             view: "reviews",
             reviews: [],
-            currentItem: 1
+            currentItem: 1,
+            sortBy: "date"
         };
         this.getReviews = this.getReviews.bind(this);
         this.voteHelpful = this.voteHelpful.bind(this);
@@ -21,6 +22,8 @@ class App extends React.Component {
         this.renderView = this.renderView.bind(this);
         this.changeView = this.changeView.bind(this);
         this.getItemByUrl = this.getItemByUrl.bind(this);
+        this.sortReviews = this.sortReviews.bind(this);
+        this.setSort = this.setSort.bind(this);
     }
 
     getItemByUrl() {
@@ -33,7 +36,9 @@ class App extends React.Component {
     getReviews() {
         let itemId = this.state.currentItem;
         axios.get(`${awsReview}/reviews/${itemId}`)
-             .then((response) => this.setState({reviews: response.data}))
+             .then((response) => this.setState({reviews: response.data}, () => {
+                 this.sortReviews(this.state.sortBy);
+             }))
              .catch((err) => console.error('There was a problem getting reviews: ' + err))
     }
 
@@ -47,6 +52,45 @@ class App extends React.Component {
         axios.patch(`${awsReview}/reviews`, {id: review.id, helpful: false})
              .then((response) => this.getReviews())
              .catch((err) => console.error('Could not process vote'))
+    }
+
+    setSort(attribute) {
+        this.setState({sortBy: attribute}, () => this.sortReviews(this.state.sortBy))
+    }
+
+    sortReviews(attribute) {
+        if (this.state.sortBy === 'date') {
+            this.setState({reviews: this.state.reviews.sort((a, b) => (new Date(b.date) - new Date(a.date)))});
+        }
+        if (this.state.sortBy === 'ownership') {
+            this.setState({reviews: this.state.reviews.sort((a, b) => {
+                if (b.verified === 'T' && a.verified === 'F') {
+                    return b;
+                } else {
+                    return a;
+                }
+            })})
+        }
+        if (this.state.sortBy === 'helpful') {
+            this.setState({reviews: this.state.reviews.sort((a, b) => {
+                let firstPercent = a.helpful / (a.helpful + a.not_helpful);
+                let secondPercent = b.helpful / (b.helpful + b.not_helpful);
+                if (a.helpful === 0 && a.not_helpful === 0) {
+                    firstPercent = 0.5;
+                } else if (b.helpful && b.not_helpful === 0) {
+                    secondPercent = 0.5;
+                }
+                // console.log('b is: ', b, 'secondPercent is: ', secondPercent, 'a is: ', a, 'firstPercent is: ', firstPercent);
+                return secondPercent - firstPercent;
+            })})
+        }
+        if (this.state.sortBy === 'highest') {
+            this.setState({reviews: this.state.reviews.sort((a, b) => (b.eggs - a.eggs))})
+        }
+        if (this.state.sortBy === 'lowest') {
+            this.setState({reviews: this.state.reviews.sort((a, b) => (a.eggs - b.eggs))})
+        }
+
     }
 
     componentDidMount() {
@@ -65,8 +109,9 @@ class App extends React.Component {
         if (view === 'reviews' && Array.isArray(reviews) && reviews.length > 0) {
             return (
                 <React.Fragment>
-                    <Overview sort={this.sort} filterByRating={this.ratingFilter}  reviews={this.state.reviews} />
-                    <Reviews voteHelpful={this.voteHelpful} voteNotHelpful={this.voteNotHelpful} reviews={this.state.reviews} />
+                    <Overview sortBy={this.setSort} filterByRating={this.ratingFilter}  reviews={this.state.reviews} />
+                    <Reviews voteHelpful={this.voteHelpful} voteNotHelpful={this.voteNotHelpful}
+                    reviews={this.state.reviews} />
                 </React.Fragment>
             )
         } else {
