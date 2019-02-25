@@ -15,7 +15,9 @@ class App extends React.Component {
             reviews: [],
             currentItem: 1,
             sortBy: "date",
-            reviewsVotedOn: []
+            reviewsVotedOn: [],
+            filters: [],
+            filteredReviews: []
         };
         this.getReviews = this.getReviews.bind(this);
         this.voteHelpful = this.voteHelpful.bind(this);
@@ -25,6 +27,7 @@ class App extends React.Component {
         this.getItemByUrl = this.getItemByUrl.bind(this);
         this.sortReviews = this.sortReviews.bind(this);
         this.setSort = this.setSort.bind(this);
+        this.filterReviews = this.filterReviews.bind(this);
     }
 
     getItemByUrl() {
@@ -41,6 +44,27 @@ class App extends React.Component {
                  this.sortReviews(this.state.sortBy);
              }))
              .catch((err) => console.error('There was a problem getting reviews: ' + err))
+    }
+
+    filterReviews(filterType) {
+        const currentFilters = this.state.filters;
+        if (currentFilters.indexOf(filterType) !== -1) {
+            currentFilters.splice(currentFilters.indexOf(filterType), 1);
+        } else {
+            currentFilters.push(filterType);
+        }
+        this.setState({filters: currentFilters}, () => {
+            if (filterType === "verified") {
+                let results = []
+                this.sortReviews(this.state.sortBy);
+                this.state.reviews.filter((review) => {
+                    if (review.verified === "T") {
+                        results.push(review)
+                    }
+                })
+                this.setState({filteredReviews: results})
+            }
+        })
     }
 
     voteHelpful(review) {
@@ -65,28 +89,42 @@ class App extends React.Component {
     }
 
     sortReviews(attribute) {
-        if (this.state.sortBy === 'date') {
-            this.setState({reviews: this.state.reviews.sort((a, b) => (new Date(b.date) - new Date(a.date)))});
-        }
-        if (this.state.sortBy === 'helpful') {
-            this.setState({reviews: this.state.reviews.sort((a, b) => (b.helpful - a.helpful))});
-        }
-        if (this.state.sortBy === 'highest') {
-            this.setState({reviews: this.state.reviews.sort((a, b) => (b.eggs - a.eggs))})
-        }
-        if (this.state.sortBy === 'lowest') {
-            this.setState({reviews: this.state.reviews.sort((a, b) => (a.eggs - b.eggs))})
-        }
-
+        // if (this.state.filters) {
+            if (this.state.sortBy === 'date') {
+                this.setState({reviews: this.state.reviews.sort((a, b) => (new Date(b.date) - new Date(a.date)))});
+                this.setState({filteredReviews: this.state.filteredReviews.sort((a, b) => (new Date(b.date) - new Date(a.date)))});
+            }
+            if (this.state.sortBy === 'helpful') {
+                this.setState({reviews: this.state.reviews.sort((a, b) => (b.helpful - a.helpful))});
+                this.setState({filteredReviews: this.state.filteredReviews.sort((a, b) => (b.helpful - a.helpful))});
+            }
+            if (this.state.sortBy === 'highest') {
+                this.setState({reviews: this.state.reviews.sort((a, b) => (b.eggs - a.eggs))})
+                this.setState({filteredReviews: this.state.filteredReviews.sort((a, b) => (b.eggs - a.eggs))})
+            }
+            if (this.state.sortBy === 'lowest') {
+                this.setState({reviews: this.state.reviews.sort((a, b) => (a.eggs - b.eggs))})
+                this.setState({filteredReviews: this.state.filteredReviews.sort((a, b) => (a.eggs - b.eggs))});
+            }
+        // } else {
+        //     if (this.state.sortBy === 'date') {
+        //         this.setState({filteredReviews: this.state.filteredReviews.sort((a, b) => (new Date(b.date) - new Date(a.date)))});
+        //     }
+        //     if (this.state.sortBy === 'helpful') {
+        //         this.setState({filteredReviews: this.state.filteredReviews.sort((a, b) => (b.helpful - a.helpful))});
+        //     }
+        //     if (this.state.sortBy === 'highest') {
+        //         this.setState({filteredReviews: this.state.filteredReviews.sort((a, b) => (b.eggs - a.eggs))})
+        //     }
+        //     if (this.state.sortBy === 'lowest') {
+        //         this.setState({filteredReviews: this.state.filteredReviews.sort((a, b) => (a.eggs - b.eggs))})
+        //     }
+        // }
     }
 
     componentDidMount() {
         this.getItemByUrl();
     }
-
-    // componentWillUnmount() {
-    //     this.setState({reviewsVotedOn: []});
-    // }
 
     changeView(newView) {
         this.setState(
@@ -100,9 +138,12 @@ class App extends React.Component {
         if (view === 'reviews' && Array.isArray(reviews) && reviews.length > 0) {
             return (
                 <React.Fragment>
-                    <Overview sortBy={this.setSort} filterByRating={this.ratingFilter}  reviews={this.state.reviews} />
+                    <Overview sortBy={this.setSort} handleFilter={this.filterReviews}  reviews={this.state.reviews} 
+                    filters={this.state.filters}  />
                     <Reviews voteHelpful={this.voteHelpful} voteNotHelpful={this.voteNotHelpful} reviewsVotedOn={this.state.reviewsVotedOn}
-                    reviews={this.state.reviews} />
+                    reviews={this.state.filters.length === 0
+                    ? this.state.reviews
+                    : this.state.filteredReviews} />
                 </React.Fragment>
             )
         } else {

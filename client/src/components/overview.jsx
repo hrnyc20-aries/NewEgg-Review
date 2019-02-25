@@ -39,19 +39,19 @@ class Overview extends React.Component {
                         <ul className="filterOptions">
                             <li>
                                 <label className="filterCheckbox">
-                                    <input type="checkbox" onClick={() => this.handleFilter(this.target)} />
-                                    <span className="checkboxTitle">Related</span>
+                                    <input type="checkbox" />
+                                    <span className="checkboxTitle">Related Products</span>
                                 </label>
                             </li>
                             <li>
                                 <label className="filterCheckbox">
-                                    <input type="checkbox" onClick={() => this.handleFilter(this.target)} />
+                                    <input type="checkbox" onChange={(e) => this.props.handleFilter("verified")} />
                                     <span className="checkboxTitle">Verified Owners</span>
                                 </label>
                             </li>
                             <li>
                                 <label className="filterCheckbox">
-                                    <input type="checkbox" onClick={() => this.handleFilter(this.target)} />
+                                    <input type="checkbox" />
                                     <span className="checkboxTitle">Mfr. Responses</span>
                                 </label>
                             </li>
