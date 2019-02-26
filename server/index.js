@@ -15,6 +15,12 @@ app.use(cors());
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
 
+app.get('*.js', function (req, res, next) {
+  req.url = req.url + '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
+
 app.get('/:id', (req, res) => {
     res.sendFile(path.join(__dirname + '/../client/dist/index.html'))
 });

@@ -34,6 +34,7 @@
     "babel-preset-stage-0": "^6.24.1",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
+    "compression-webpack-plugin": "^2.0.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "mocha": "^5.2.0",
     "webpack": "^4.29.5",
