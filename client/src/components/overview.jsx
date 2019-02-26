@@ -31,6 +31,7 @@ class Overview extends React.Component {
                     <div className="writeReview">
                         <div className="comment">
                             <div className="commentTitle">Do you own this product?</div>
+                            {/* Dead button: on New Egg this takes user to a new page */}
                             <button className="writeReviewButton">Write a Review</button>
                         </div>
                     </div>
@@ -40,6 +41,7 @@ class Overview extends React.Component {
                             <li>
                                 <label className="filterCheckbox">
                                     <input type="checkbox" />
+                                    {/* Does not filter: no related product information in database */}
                                     <span className="checkboxTitle">Related Products</span>
                                 </label>
                             </li>
@@ -52,6 +54,7 @@ class Overview extends React.Component {
                             <li>
                                 <label className="filterCheckbox">
                                     <input type="checkbox" />
+                                    {/* Does not filter: no manufacturer responses */}
                                     <span className="checkboxTitle">Mfr. Responses</span>
                                 </label>
                             </li>
@@ -69,7 +72,7 @@ class Overview extends React.Component {
                                     <div className="ratingNumber">{this.getNumberOfRatings(eggCount)}
                                     </div>
                                 </div>
-                                <div className="ratingPercent"> {Math.round(this.getPercent(eggCount))}%
+                                <div className="ratingPercent"> {Math.round(this.getPercent(eggCount)) || 0}%
                                 </div>
                             </div>
                         </div>
@@ -89,7 +92,9 @@ class Overview extends React.Component {
                                 <option value="lowest">Lowest Rated</option>
                             </select>
                         </label>
-                        <div className="reviewCount">Reviews <strong>1-{this.props.reviews.length}</strong> of <strong>{this.props.reviews.length}</strong></div>
+                        <div className="reviewCount">Reviews <strong>{this.props.reviews.length > 0
+                        ? 1
+                        : 0}-{this.props.reviews.length}</strong> of <strong>{this.props.reviews.length}</strong></div>
                     </div>
                 </div>
             </div>

@@ -74,6 +74,7 @@ class Reviews extends React.Component {
                         ? 'verified'
                         : 'unverified'}>
                         {review.verified === 'T'
+                        // hardcoded: no length of ownership information in database
                         ? 'Ownership: 1 month to 1 year'
                         : ''}
                         <br />

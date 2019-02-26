@@ -135,7 +135,7 @@ class App extends React.Component {
     renderView() {
         let {view} = this.state;
         let {reviews} = this.state;
-        if (view === 'reviews' && Array.isArray(reviews) && reviews.length > 0) {
+        if (view === 'reviews') {
             return (
                 <React.Fragment>
                     <Overview sortBy={this.setSort} handleFilter={this.filterReviews}  reviews={this.state.reviews} 
