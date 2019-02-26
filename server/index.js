@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const sqlite3 = require('sqlite3');
-const path = require('path')
+const path = require('path');
+const compression = require('compression');
 
 const app = express();
 const port = process.env.PORT || 3009;
@@ -12,14 +13,16 @@ const dbPath = path.resolve(__dirname, '../database/reviewdb.db')
 let db = new sqlite3.Database(dbPath);
 
 app.use(cors());
-app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
+app.use(compression());
 
 app.get('*.js', function (req, res, next) {
   req.url = req.url + '.gz';
   res.set('Content-Encoding', 'gzip');
   next();
 });
+
+app.use(express.static(__dirname + '/../client/dist'));
 
 app.get('/:id', (req, res) => {
     res.sendFile(path.join(__dirname + '/../client/dist/index.html'))
