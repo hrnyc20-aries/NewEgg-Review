@@ -4,11 +4,7 @@ var DIST_DIR = path.join(__dirname, '/client/dist');
 var CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
-<<<<<<< HEAD
   mode: process.env.NODE_ENV || 'development',
-=======
-  mode: 'production',
->>>>>>> develop
   entry: {
     app: ['babel-polyfill', `${SRC_DIR}/index.jsx`]
   },
