@@ -9,12 +9,12 @@ const PORT = process.env.PORT || 3009;
 const router = express.Router();
 const cors = require('cors');
 
-const dbPath = path.resolve(__dirname, '../database/reviewdb.db');
+const dbPath = path.resolve(__dirname, './database/reviewdb.db');
 let db = new sqlite3.Database(dbPath);
 
-app.use(cors());
-app.use(bodyParser.json());
 app.use(compression());
+app.use(express.json());
+app.use(cors());
 
 app.get('*.js', function(req, res, next) {
   req.url = req.url + '.gz';
@@ -22,10 +22,11 @@ app.get('*.js', function(req, res, next) {
   next();
 });
 
-app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static(path.join(__dirname, '../build')));
 
-app.get('/:id', (req, res) => {
-  res.sendFile(path.join(__dirname + '/../client/dist/index.html'));
+app.use('*.css', function(req, res) {
+  res.set('Content-Type', 'text/css');
+  res.sendFile(path.join(__dirname, '../src/style.css'));
 });
 
 app.get('/reviews/:item_id', (req, res) => {
@@ -36,7 +37,7 @@ app.get('/reviews/:item_id', (req, res) => {
       if (err) {
         console.error('ERROR occurred while retrieving reviews');
       }
-      res.send(200, row);
+      res.send(row);
     }
   );
 });
@@ -84,6 +85,10 @@ app.patch('/reviews', (req, res) => {
 
 app.listen(PORT, () => {
   console.log('Listening on port ' + PORT);
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../src/index.html'));
 });
 
 module.exports = {

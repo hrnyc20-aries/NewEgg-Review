@@ -1,0 +1,377 @@
+body {
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+li {
+  margin: 0 0 0.5em 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-weight: inherit;
+  font-style: normal;
+  font-family: inherit;
+  text-decoration: none;
+}
+
+.app {
+  margin: 0 0 0 1px;
+  border-left: 1px solid #ccc;
+  border-top-left-radius: 6px;
+}
+
+.reviewApp {
+  display: inline-block;
+  width: 100%;
+}
+
+.main {
+  /* width: 75%; */
+  border: 1px solid #ccc;
+  /* border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc; */
+}
+
+.navbar {
+  display: block !important;
+  width: 100%;
+  /* border-bottom: 1px solid #ccc; */
+  padding: 7px 7px 7px 0;
+}
+
+.reviewOverview {
+  clear: left;
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  padding: 1em 10px 20px;
+  background: #fff;
+  font-size: 13px;
+}
+
+.reviews {
+  margin: 10px 0 0 1px;
+  /* border-left: 1px solid #ccc;; */
+}
+
+.nav_unselected {
+  margin: 0px;
+  padding: 10px;
+  display: inline;
+  justify-content: left;
+  align-items: center;
+  border-left: 1px solid #ccc;
+  /* border-bottom: 1px solid #ccc; */
+  background-image: linear-gradient(to top, #e8ecef, #f5f6fb);
+  font-size: 13px;
+  /* height: 18px; */
+}
+
+.nav_title {
+  font-size: 13px;
+  margin: 0px 0px 0 -1px;
+  display: inline-block;
+  padding: 1px;
+  line-height: 18px;
+  vertical-align: middle;
+}
+
+.nav_selected .nav_title {
+  border-bottom: 1px solid #f90;
+}
+
+.nav_selected {
+  padding: 8px 10px 10px 10px;
+  border-bottom: 1px solid #fff;
+  background: #fff;
+}
+
+.sectionTitle {
+  color: #4d4d4d;
+  padding: 0.5em 0;
+  margin: 0;
+  font-size: 1.4em;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.reviews {
+  padding: 0 16px 10px 16px;
+}
+
+.review {
+  display: flex;
+  clear: left;
+  padding: 30px 16px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* .reviewOverview {
+    width: 76.3%;
+    border-right: 1px solid #ccc;
+} */
+
+.sidebar {
+  order: 1;
+  flex: 1;
+}
+
+.reviewBody {
+  order: 2;
+  flex: 3;
+  padding: 0 20px 0 0;
+  font-size: 13px;
+}
+
+.author {
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.verified {
+  color: #707070;
+  font-size: 12px;
+}
+
+.reviewHead {
+  display: flex !important;
+  flex-direction: row !important;
+  /* justify-content: space-between; */
+}
+
+.rating {
+  order: 1 !important;
+  width: 59px !important;
+  height: 20px !important;
+  padding: 0 10px 5px 0 !important;
+  flex-grow: 0 !important;
+}
+
+.reviewTitle {
+  order: 2 !important;
+  font-weight: bold !important;
+  padding: 0 10px 0 10px !important;
+  flex-grow: 2 !important;
+}
+
+.reviewDate {
+  order: 3 !important;
+  align-self: flex-end !important;
+  padding: 0 0 0 10px !important;
+  float: right !important;
+  flex-grow: 1 !important;
+}
+
+.ratingBlock {
+  position: relative;
+  padding: 0 0 0 30px;
+  margin-bottom: 20px;
+}
+
+.ratingInner {
+  margin-right: 480px;
+  padding-right: 30px;
+}
+
+.ratingInnerBody {
+  position: relative;
+  float: left;
+  width: 100%;
+}
+
+.ratingView {
+  display: block;
+  position: relative;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.ratingViewLine {
+  display: grid;
+  grid-template-columns: 0 100% 0;
+  grid-template-areas: 'name chart percent';
+  grid-column-gap: 0;
+}
+
+.ratingChart {
+  grid-area: chart;
+  justify-self: stretch;
+  position: relative;
+  margin: 0 40px 0 45px;
+  overflow: hidden;
+  border-radius: 3px;
+  background: #707070;
+  height: 100%;
+  box-sizing: border-box;
+  line-height: 22px;
+}
+
+.ratingChart_current {
+  height: inherit;
+  background: #ff9800;
+  transition: width 0.3s;
+}
+
+.ratingName {
+  grid-area: name;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  box-sizing: border-box;
+  line-height: 22px;
+}
+
+.ratingNumber {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 7px;
+  width: 100%;
+  height: inherit;
+  box-sizing: border-box;
+  overflow: hidden;
+  color: #fff;
+  font-weight: 700;
+  text-overflow: ellipsis;
+}
+
+.ratingPercent {
+  grid-area: percent;
+  justify-self: end;
+  height: 100%;
+  box-sizing: border-box;
+  line-height: 22px;
+}
+
+.writeReview {
+  display: block;
+  float: right;
+  padding: 0 0 0 30px;
+  width: 240px;
+  box-sizing: border-box;
+}
+
+.filter {
+  display: block;
+  float: right;
+  padding: 0 0 0 30px;
+  width: 240px;
+  box-sizing: border-box;
+}
+
+.filterTitle {
+  margin: 0 0 15px 0;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.filterCheckbox {
+  display: inline-block;
+  position: relative;
+  margin-right: 8px;
+  padding-left: 0;
+  box-sizing: border-box;
+  vertical-align: middle;
+  letter-spacing: normal;
+  cursor: pointer;
+}
+
+.form-checkbox input[type='checkbox'] {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  opacity: 0;
+  vertical-align: middle;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.toolBar {
+  clear: both;
+
+  padding: 30px 30px;
+  background: #f4f5f7;
+}
+
+.reviewCount {
+  /* display: inline-block; */
+  float: right;
+  vertical-align: middle;
+  padding: 0 10px 0 0;
+}
+
+.form-select {
+  float: right;
+  vertical-align: middle;
+  /* display: inline-block; */
+  position: relative;
+  max-width: 100%;
+  white-space: nowrap;
+  margin-right: 20px;
+}
+
+.form-select > select {
+  position: relative;
+  vertical-align: middle;
+  /* float: left; */
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  /* opacity: 0; */
+  font-size: 13px;
+  box-sizing: border-box;
+  background-color: rgb(248, 248, 248);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(166, 166, 166);
+  border-image: initial;
+  border-radius: 5px;
+}
+
+.poll {
+  float: right;
+  font-size: 13px;
+  /* padding: 10px 0; */
+}
+
+.yes,
+.no {
+  margin: 10px 5px;
+}
+
+#overview {
+  border-top-left-radius: 6px;
+  border-left: 1px solid #ccc;
+  border-top: 1px solid #ccc;
+}
+
+#specs {
+  border-top: 1px solid #ccc;
+}
+
+#warranty {
+  border-top: 1px solid #ccc;
+}
+
+#reviews {
+  border-top: 1px solid #ccc;
+}
+
+#questions {
+  border-top-right-radius: 6px;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+}
+
+.blank {
+  padding: 30px;
+}

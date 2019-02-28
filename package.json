@@ -7,18 +7,17 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "npm run server-dev & npm run react-dev",
-    "test": "mocha",
-    "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon -r dotenv/config server/index.js",
-    "build-prod": "webpack -r dotenv/config -p"
+    "start": "npm run serve-dev",
+    "build": "webpack -r dotenv/config -p",
+    "serve-dev": "nodemon -r dotenv/config server/index.js",
+    "test": "mocha"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "body-parser": "^1.18.3",
     "bootstrap": "^4.2.1",
     "compression": "^1.7.3",
     "cors": "^2.8.5",
+    "css-webpack-plugin": "^1.0.2",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "faker": "^4.1.0",
@@ -40,7 +39,9 @@
     "chai-http": "^4.2.1",
     "compression-webpack-plugin": "^2.0.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
+    "html-webpack-plugin": "^3.2.0",
     "mocha": "^5.2.0",
+    "rimraf": "^2.6.3",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14"
