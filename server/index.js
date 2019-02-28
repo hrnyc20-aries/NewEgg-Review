@@ -1,16 +1,11 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const sqlite3 = require('sqlite3');
 const path = require('path');
+const express = require('express');
 const compression = require('compression');
 
-const app = express();
-const PORT = process.env.PORT || 3009;
-const router = express.Router();
 const cors = require('cors');
+const PORT = process.env.PORT || 3009;
 
-const dbPath = path.resolve(__dirname, './database/reviewdb.db');
-let db = new sqlite3.Database(dbPath);
+const app = express();
 
 app.use(compression());
 app.use(express.json());
