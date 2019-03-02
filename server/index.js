@@ -1,16 +1,12 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const sqlite3 = require('sqlite3');
 const path = require('path');
+const express = require('express');
 const compression = require('compression');
+const routes = require('./api');
+
+const cors = require('cors');
+const PORT = process.env.PORT || 3009;
 
 const app = express();
-const PORT = process.env.PORT || 3009;
-const router = express.Router();
-const cors = require('cors');
-
-const dbPath = path.resolve(__dirname, './database/reviewdb.db');
-let db = new sqlite3.Database(dbPath);
 
 app.use(compression());
 app.use(express.json());
@@ -22,66 +18,14 @@ app.get('*.js', function(req, res, next) {
   next();
 });
 
+// app.get('*.css', function(req, res) {
+//   res.set('Content-Type', 'text/css');
+//   res.sendFile(path.join(__dirname, '../src/style.css'));
+// });
+
 app.use(express.static(path.join(__dirname, '../build')));
 
-app.use('*.css', function(req, res) {
-  res.set('Content-Type', 'text/css');
-  res.sendFile(path.join(__dirname, '../src/style.css'));
-});
-
-app.get('/reviews/:item_id', (req, res) => {
-  db.all(
-    'SELECT * FROM reviews WHERE item_id=(?)',
-    [req.params.item_id],
-    (err, row) => {
-      if (err) {
-        console.error('ERROR occurred while retrieving reviews');
-      }
-      res.send(row);
-    }
-  );
-});
-
-app.post('/reviews', (req, res) => {
-  let newPost = req.body;
-  let stmt = db.prepare(
-    'INSERT INTO reviews (item_id, title, pros,\
-    cons,body,verified,date,eggs,author) VALUES (?,?,?,?,?,?,?,?,?)'
-  );
-  stmt.run(
-    newPost.item_id,
-    newPost.title,
-    newPost.pros,
-    newPost.cons,
-    newPost.body,
-    newPost.verified,
-    newPost.date,
-    newPost.eggs,
-    newPost.author
-  );
-  stmt.finalize();
-  res.send(201);
-});
-
-app.patch('/reviews', (req, res) => {
-  let newPost = req.body;
-  if (req.body.helpful === true) {
-    let stmt = db.prepare(
-      'UPDATE reviews SET helpful = helpful + 1 WHERE id = ?'
-    );
-    stmt.run(newPost.id);
-    stmt.finalize();
-    res.send(201);
-  }
-  if (req.body.helpful === false) {
-    let stmt = db.prepare(
-      'UPDATE reviews SET not_helpful = not_helpful + 1 WHERE id = ?'
-    );
-    stmt.run(newPost.id);
-    stmt.finalize();
-    res.send(201);
-  }
-});
+app.use('/', routes);
 
 app.listen(PORT, () => {
   console.log('Listening on port ' + PORT);
@@ -91,6 +35,14 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../src/index.html'));
 });
 
-module.exports = {
-  app
-};
+// module.exports = {
+//   app
+// };
+
+
+const START, END;
+
+for (let START = 0; START < END; START++) {
+  const element = array[START];
+  
+}

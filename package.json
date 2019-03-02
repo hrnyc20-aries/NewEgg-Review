@@ -13,6 +13,7 @@
     "test": "mocha"
   },
   "dependencies": {
+    "assert": "^1.4.1",
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
     "compression": "^1.7.3",
@@ -22,10 +23,10 @@
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "jquery": "^3.3.1",
+    "mongodb": "^3.1.13",
     "nodemon": "^1.18.10",
     "react": "^16.8.2",
-    "react-dom": "^16.8.2",
-    "sqlite3": "^4.0.6"
+    "react-dom": "^16.8.2"
   },
   "devDependencies": {
     "babel": "^6.23.0",

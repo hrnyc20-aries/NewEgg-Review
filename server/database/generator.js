@@ -1,19 +1,37 @@
 const faker = require('faker');
+let amount = process.env.MONGO_AMOUNT || 1000000;
 
-module.exports = {
-  author: () => faker.name.findName(),
-  body: () => faker.lorem.paragraph(),
-  pros: () => faker.lorem.sentence(),
-  cons: () => faker.lorem.sentence(),
-  title: () => faker.lorem.words(),
-  date: (n) => JSON.stringify(faker.date.recent(n)).replace(/"/g, ''),
-  verified: () => {
+let seedModel = () => {
+  let seed = Object.create(staticObj);
+
+  seed.item_id = Math.floor(Math.random() * amount) + 1;
+  seed.date = JSON.stringify(faker.date.recent(10000)).replace(/"/g, '');
+  seed.eggs = Math.floor(Math.random() * 5) + 1;
+  seed.verified = (() => {
     let value = Math.floor(Math.random() * 2);
-    if (value === 0) {
-      return 'F';
-    }
+    if (value === 0) return 'F';
     return 'T';
-  },
-  item_id: (max) => Math.floor(Math.random() * max) + 1,
-  eggs: (max) => Math.floor(Math.random() * max) + 1
+  })();
+
+  return seed;
+};
+
+let staticObj = {
+  title: faker.lorem.words(),
+  pros: faker.lorem.sentence(),
+  cons: faker.lorem.sentence(),
+  body: faker.lorem.paragraph(),
+  author: faker.name.findName()
+};
+
+module.exports = () => {
+  return new Promise((resolve, reject) => {
+    let output = [];
+
+    while (output.length < amount) {
+      output.push(seedModel());
+    }
+
+    resolve(output);
+  });
 };
