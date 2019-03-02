@@ -2,6 +2,7 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const seedModel = require('./generator');
 const { performance } = require('perf_hooks');
+const { memUsed, queue } = require('./util');
 const amount = process.env.MONGO_AMOUNT || 1000000;
 
 // Connection URL
