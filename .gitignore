@@ -8,3 +8,5 @@ node_modules/
 build/*.gz
 build/*.html
 build/*.js
+
+./*.env

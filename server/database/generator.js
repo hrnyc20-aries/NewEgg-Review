@@ -1,10 +1,10 @@
 const faker = require('faker');
-let amount = process.env.MONGO_AMOUNT || 1000000;
+let amount = process.env.SEED_AMOUNT || 1000;
 
 let seedModel = () => {
   let seed = Object.create(staticObj);
 
-  seed.item_id = Math.floor(Math.random() * amount) + 1;
+  seed.item_id = Math.floor(Math.random() * 1000000) + 1;
   seed.date = JSON.stringify(faker.date.recent(10000)).replace(/"/g, '');
   seed.eggs = Math.floor(Math.random() * 5) + 1;
   seed.verified = (() => {
