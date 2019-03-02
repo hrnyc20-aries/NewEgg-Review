@@ -2,6 +2,7 @@ const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 const seedModel = require('./generator');
 const { performance } = require('perf_hooks');
+const amount = process.env.MONGO_AMOUNT || 1000000;
 
 // Connection URL
 const url = 'mongodb://localhost:27000';
@@ -9,7 +10,7 @@ const url = 'mongodb://localhost:27000';
 // Database Name
 const dbName = 'newegg';
 
-console.log('MONGO RECORDS TO INSERT =>', process.env.MONGO_AMOUNT);
+console.log('MONGO RECORDS TO INSERT =>', amount);
 
 // Use connect method to connect to the server
 MongoClient.connect(url, { useNewUrlParser: true }, async (err, client) => {
@@ -22,7 +23,7 @@ MongoClient.connect(url, { useNewUrlParser: true }, async (err, client) => {
 
   const db = client.db(dbName);
 
-  let result = await insertDocuments(db);
+  await queue(10, db, insertDocuments);
 
   client.close();
   console.log('Server Closing');
@@ -47,11 +48,9 @@ const insertDocuments = async (db) => {
   memUsed('Heap After DB Seed =>');
 
   assert.notEqual(docs, null);
-  assert.equal(process.env.MONGO_AMOUNT, docs.result.n);
-  assert.equal(process.env.MONGO_AMOUNT, docs.ops.length);
-  console.log(
-    `Inserted ${process.env.MONGO_AMOUNT} documents into the collection`
-  );
+  assert.equal(amount, docs.result.n);
+  assert.equal(amount, docs.ops.length);
+  console.log(`Inserted ${amount} documents into the collection`);
 
   return docs;
 };
@@ -75,5 +74,11 @@ let memUsed = (message) => {
       message,
       `${key} ${Math.round((used[key] / 1024 / 1024) * 100) / 100} MB`
     );
+  }
+};
+
+let queue = async (iteration, db, callback) => {
+  for (let it = 0; it < iteration; it++) {
+    await callback(db);
   }
 };
