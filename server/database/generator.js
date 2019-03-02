@@ -1,5 +1,5 @@
 const faker = require('faker');
-let amount = process.env.SEED_AMOUNT || 1000000;
+let amount = process.env.SEED_AMOUNT || 1000;
 
 let seedModel = () => {
   let seed = Object.create(staticObj);

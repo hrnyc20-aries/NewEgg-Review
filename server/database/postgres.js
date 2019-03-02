@@ -1,13 +1,15 @@
 require('dotenv').config();
-const { Pool } = require('pg');
 const { performance } = require('perf_hooks');
+// NOTE: queue will be used when trying to add up to 10M records into DB
 const { memUsage: memoryUsage, queue } = require('./util');
 const pgp = require('pg-promise')({
   capSQL: true
 });
 const seedModel = require('./generator');
 const assert = require('assert');
-const amount = process.env.PG_AMOUNT || 1000000;
+
+// NOTE: Amount is used with queue
+const amount = process.env.PG_AMOUNT || 1000;
 
 const connectionObject = {
   host: process.env.PGHOST,
@@ -17,48 +19,14 @@ const connectionObject = {
   password: process.env.PGPASSWORD
 };
 
-// const db = new Pool(connectionObject);
-
-// db.connect(async (err, client) => {
-//   assert.equal(null, err);
-
-//   let t0 = performance.now();
-//   memUsage('Heap Before Inserts =>');
-
-//   // Create Table if Doesn't Exist
-//   let reviewTable = await client.query(createTableIfNotExists);
-//   assert.equal(reviewTable.command, 'CREATE');
-
-//   client.end();
-//   console.log('Server Closing');
-
-//   let t1 = performance.now();
-//   memUsage('Heap After Close =>');
-
-//   let seconds = Math.floor(((t1 - t0) / 1000) * 100) / 100;
-//   console.log(`Call to seed mongoDB took ${seconds} seconds`);
-// });
-
-// const createTableIfNotExists = `
-// CREATE TABLE IF NOT EXISTS reviews (
-//   id SERIAL PRIMARY KEY,
-//   item_id VARCHAR(255),
-//   date DATE,
-//   eggs SMALLINT,
-//   verified BOOLEAN,
-//   title TEXT NOT NULL,
-//   pros VARCHAR(255),
-//   cons VARCHAR(255),
-//   body VARCHAR(255),
-//   author VARCHAR(255)
-// );
-// `;
-
+// Establish a PostgreSQL DB connection
 const db = pgp(connectionObject);
 
 let populate = async () => {
   await db.none('DROP TABLE IF EXISTS reviews;');
 
+  // Start Timer NOTE: this can be removed when the DB script has been
+  // Optimized.  The memoryUsage function can also be removed by then.
   let t0 = performance.now();
   memoryUsage('Heap Before Inserts =>');
 
@@ -68,16 +36,19 @@ let populate = async () => {
 
   let result = await insertData();
   assert.equal(null, result);
+
   memoryUsage('Heap After DB Seed =>');
 
-  //  close server
-  // console.log('Server Closing');
+  // TODO: Create a close connection
   memoryUsage('Heap After Close =>');
+
+  // Stop Timer && Log
   let t1 = performance.now();
   let seconds = Math.floor(((t1 - t0) / 1000) * 100) / 100;
   console.log(`Call to seed mongoDB took ${seconds} seconds`);
 };
 
+// Fetch Data and Insert Into DB
 let insertData = async () => {
   const data = await seedModel();
   memoryUsage('Heap After Obj Intantiation Seed =>');
@@ -87,6 +58,7 @@ let insertData = async () => {
   return await db.none(insert);
 };
 
+// Table Creation Script
 const createTableIfNotExists = `
 CREATE TABLE IF NOT EXISTS reviews (
   id SERIAL PRIMARY KEY,
@@ -102,6 +74,7 @@ CREATE TABLE IF NOT EXISTS reviews (
 );
 `;
 
+// NOTE: PG-Promise Column Set for Bulk Writes
 const cs = new pgp.helpers.ColumnSet(
   [
     'item_id',
