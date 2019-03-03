@@ -9,6 +9,7 @@
   "scripts": {
     "start": "npm run serve-dev",
     "build": "webpack -r dotenv/config -p",
+    "mongo": "node -r dotenv/config server/database/mongo.js",
     "serve-dev": "nodemon -r dotenv/config server/index.js",
     "test": "mocha"
   },

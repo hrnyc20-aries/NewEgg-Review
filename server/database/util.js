@@ -8,8 +8,8 @@ let memUsage = (message) => {
   }
 };
 
-let queue = async (iteration, db, callback) => {
-  for (let it = 0; it < iteration; it++) {
+let queue = async (iterateTo, db, callback) => {
+  for (let iteration = 0; iteration < iterateTo; iteration++) {
     await callback(db);
   }
 };

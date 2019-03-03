@@ -28,7 +28,7 @@ module.exports = () => {
   return new Promise((resolve, reject) => {
     let output = [];
 
-    while (output.length < amount) {
+    while (output.length < amount / 10) {
       output.push(seedModel());
     }
 
