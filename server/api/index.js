@@ -26,6 +26,7 @@ module.exports = () => {
     client.reviews.findOneAndUpdate(
       { _id: ObjectID(review_id) },
       { $set: req.body },
+      { returnOriginal: false },
       (err, result) => {
         !err ? res.send(result) : res.status(400).send(err);
       }
