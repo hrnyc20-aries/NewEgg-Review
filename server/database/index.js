@@ -31,13 +31,19 @@ const mongoURL = `mongodb://${HOST}:${PORT}`;
     },
 
     postgre: async () => {
-      return await pgp(postgreSQLConnectionObject);
+      let client = await pgp(postgreSQLConnectionObject);
+      if (client)
+        console.log(
+          `Connected to Database on port ${postgreSQLConnectionObject.port}`
+        );
+      // console.log(client);
+      return client;
     }
   };
 
   if (typeof exports !== 'undefined') {
     if (typeof module && module.exports !== 'undefined') {
-      module.exports.reviews = await dbs[Database]();
+      module.exports.db = await dbs[Database]();
     }
   }
 })(process.env.DATABASE_TO_USE);
