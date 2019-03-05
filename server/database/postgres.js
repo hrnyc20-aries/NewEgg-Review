@@ -2,9 +2,7 @@ require('dotenv').config();
 const { performance } = require('perf_hooks');
 // NOTE: queue will be used when trying to add up to 10M records into DB
 const { memUsage: memoryUsage, queue } = require('./util');
-const pgp = require('pg-promise')({
-  capSQL: true
-});
+const pgp = require('pg-promise')({ capSQL: true });
 const seedModel = require('./generator');
 const assert = require('assert');
 
@@ -85,7 +83,9 @@ const cs = new pgp.helpers.ColumnSet(
     'pros',
     'cons',
     'body',
-    'author'
+    'author',
+    'helpful',
+    'not_helpful'
   ],
   { table: 'reviews' }
 );
