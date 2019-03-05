@@ -21,7 +21,9 @@ let staticObj = {
   pros: faker.lorem.sentence(),
   cons: faker.lorem.sentence(),
   body: faker.lorem.paragraph(),
-  author: faker.name.findName()
+  author: faker.name.findName(),
+  helpful: 0,
+  not_helpful: 0
 };
 
 module.exports = () => {
