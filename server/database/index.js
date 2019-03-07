@@ -36,7 +36,6 @@ const mongoURL = `mongodb://${HOST}:${PORT}`;
         console.log(
           `Connected to Database on port ${postgreSQLConnectionObject.port}`
         );
-      // console.log(client);
       return client;
     }
   };

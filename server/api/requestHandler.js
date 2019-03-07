@@ -1,9 +1,9 @@
-const client = require('../database');
+// const client = require('../database');
 const { ObjectID } = require('mongodb');
 
 module.exports = {
   GET: {
-    mongo: (req, res) => {
+    mongo: (req, res, client) => {
       const { item_id } = req.params;
 
       return client.db.find({ item_id: +item_id }).toArray((err, docs) => {
@@ -11,7 +11,7 @@ module.exports = {
       });
     },
 
-    postgre: (req, res) => {
+    postgre: (req, res, client) => {
       const { item_id } = req.params;
 
       let getItemsReviews = 'SELECT * FROM reviews WHERE item_id = ${item_id}';
@@ -31,7 +31,7 @@ module.exports = {
   },
 
   POST: {
-    mongo: (req, res) => {
+    mongo: (req, res, client) => {
       return client.db.insertMany([req.body], (err, { result }) => {
         !err
           ? res.send({ result, review: req.body })
@@ -39,7 +39,7 @@ module.exports = {
       });
     },
 
-    postgre: (req, res) => {
+    postgre: (req, res, client) => {
       let {
         item_id,
         title,
@@ -77,7 +77,7 @@ module.exports = {
   },
 
   PATCH: {
-    mongo: (req, res) => {
+    mongo: (req, res, client) => {
       const { review_id } = req.params;
 
       return client.db.findOneAndUpdate(
@@ -90,7 +90,7 @@ module.exports = {
       );
     },
 
-    postgre: (req, res) => {
+    postgre: (req, res, client) => {
       let { id, helpful } = req.body;
       let field = (helpful && 'helpful') || 'not_helpful';
 
