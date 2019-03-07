@@ -1,27 +1,30 @@
-require('dotenv').config();
-const { performance } = require('perf_hooks');
-// NOTE: queue will be used when trying to add up to 10M records into DB
-const { memUsage: memoryUsage, queue } = require('./util');
-const pgp = require('pg-promise')({ capSQL: true });
-const seedModel = require('./generator');
+// require('dotenv').config();
 const assert = require('assert');
+const { performance } = require('perf_hooks');
+const { memUsage: memoryUsage, queue } = require('./util');
+
+const client = require('../database');
+const seedModel = require('./generator');
+const pgp = require('pg-promise')({ capSQL: true });
+
+// NOTE: queue will be used when trying to add up to 10M records into DB
 
 // NOTE: Amount is used with queue
-const amount = process.env.PG_AMOUNT || 1000;
+// const amount = process.env.PG_AMOUNT || 1000;
 
-const connectionObject = {
-  host: process.env.PGHOST,
-  port: process.env.PGPORT,
-  database: process.env.PGDATABASE,
-  user: process.env.PGUSER,
-  password: process.env.PGPASSWORD
-};
+// const connectionObject = {
+//   host: process.env.PGHOST,
+//   port: process.env.PGPORT,
+//   database: process.env.PGDATABASE,
+//   user: process.env.PGUSER,
+//   password: process.env.PGPASSWORD
+// };
 
-// Establish a PostgreSQL DB connection
-const db = pgp(connectionObject);
+// // Establish a PostgreSQL DB connection
+// const db = pgp(connectionObject);
 
-let populate = async () => {
-  await db.none('DROP TABLE IF EXISTS reviews;');
+let populate = async (amount) => {
+  await client.db.none('DROP TABLE IF EXISTS reviews;');
 
   // Start Timer NOTE: this can be removed when the DB script has been
   // Optimized.  The memoryUsage function can also be removed by then.
@@ -32,7 +35,7 @@ let populate = async () => {
   await db.none(createTableIfNotExists);
   // assert.equal(null, err);
 
-  let result = await insertData();
+  let result = await insertData(amount);
   assert.equal(null, result);
 
   memoryUsage('Heap After DB Seed =>');
@@ -47,8 +50,8 @@ let populate = async () => {
 };
 
 // Fetch Data and Insert Into DB
-let insertData = async () => {
-  const data = await seedModel();
+let insertData = async (amount) => {
+  const data = await seedModel(amount);
   memoryUsage('Heap After Obj Intantiation Seed =>');
 
   const insert = pgp.helpers.insert(data, cs);
@@ -72,7 +75,7 @@ CREATE TABLE IF NOT EXISTS reviews (
 );
 `;
 
-// NOTE: PG-Promise Column Set for Bulk Writes
+// PG-Promise Column Set for Bulk Writes
 const cs = new pgp.helpers.ColumnSet(
   [
     'item_id',
@@ -90,4 +93,6 @@ const cs = new pgp.helpers.ColumnSet(
   { table: 'reviews' }
 );
 
-populate();
+// populate();
+
+module.exports = populate;
