@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-const db = require('./database');
+const client = require('./database');
 const compression = require('compression');
 const routes = require('./api');
 
@@ -22,7 +22,7 @@ server.get('*.js', function(req, res, next) {
 
 server.use(express.static(path.join(__dirname, '../build')));
 
-server.use('/', routes(db));
+server.use('/', routes(client));
 
 server.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
