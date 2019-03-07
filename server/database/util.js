@@ -8,9 +8,9 @@ let memUsage = (message) => {
   }
 };
 
-let queue = async (iterateTo, db, callback) => {
-  for (let iteration = 0; iteration < iterateTo; iteration++) {
-    await callback(db);
+let queue = async (db, total, callback) => {
+  for (let iteration = 0; iteration < 10; iteration++) {
+    await callback(db, total / 10);
   }
 };
 

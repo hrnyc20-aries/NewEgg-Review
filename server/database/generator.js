@@ -1,5 +1,4 @@
 const faker = require('faker');
-// let amount = process.env.SEED_AMOUNT || 1000;
 
 let seedModel = () => {
   let seed = Object.create(staticObj);
@@ -21,9 +20,7 @@ let staticObj = {
   pros: faker.lorem.sentence(),
   cons: faker.lorem.sentence(),
   body: faker.lorem.paragraph(),
-  author: faker.name.findName(),
-  helpful: 0,
-  not_helpful: 0
+  author: faker.name.findName()
 };
 
 module.exports = (amount) => {

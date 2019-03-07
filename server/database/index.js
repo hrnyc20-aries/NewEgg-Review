@@ -25,9 +25,7 @@ const mongoURL = `mongodb://${HOST}:${PORT}`;
       const db = await client.db(DBNAME);
       if (db) console.log(`Connected to Database on port ${PORT}`);
 
-      const reviews = await db.collection('reviews');
-
-      return reviews;
+      return db;
     },
 
     postgre: async () => {
