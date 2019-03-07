@@ -1,58 +1,24 @@
 const express = require('express');
-const router = express.Router();
+const requests = require('./requestHandler');
+const seed = require('../database/mongoSeed');
+const dbToUSe = process.env.DATABASE_TO_USE || 'mongo';
 
-router.get('/reviews/:item_id', (req, res) => {
-  db.all(
-    'SELECT * FROM reviews WHERE item_id=(?)',
-    [req.params.item_id],
-    (err, row) => {
-      if (err) {
-        console.error('ERROR occurred while retrieving reviews');
-      }
-      res.send(row);
-    }
-  );
-});
+module.exports = (client) => {
+  const router = express.Router();
 
-router.post('/reviews', (req, res) => {
-  let newPost = req.body;
-  let stmt = db.prepare(
-    'INSERT INTO reviews (item_id, title, pros,\
-    cons,body,verified,date,eggs,author) VALUES (?,?,?,?,?,?,?,?,?)'
-  );
-  stmt.run(
-    newPost.item_id,
-    newPost.title,
-    newPost.pros,
-    newPost.cons,
-    newPost.body,
-    newPost.verified,
-    newPost.date,
-    newPost.eggs,
-    newPost.author
-  );
-  stmt.finalize();
-  res.send(201);
-});
+  router.get('/reviews/:item_id', (req, res) => {
+    requests['GET'][dbToUSe](req, res, client);
+  });
 
-router.patch('/reviews', (req, res) => {
-  let newPost = req.body;
-  if (req.body.helpful === true) {
-    let stmt = db.prepare(
-      'UPDATE reviews SET helpful = helpful + 1 WHERE id = ?'
-    );
-    stmt.run(newPost.id);
-    stmt.finalize();
-    res.send(201);
-  }
-  if (req.body.helpful === false) {
-    let stmt = db.prepare(
-      'UPDATE reviews SET not_helpful = not_helpful + 1 WHERE id = ?'
-    );
-    stmt.run(newPost.id);
-    stmt.finalize();
-    res.send(201);
-  }
-});
+  router.post('/reviews', (req, res) => {
+    requests['POST'][dbToUSe](req, res, client);
+  });
 
-module.exports = router;
+  router.patch('/reviews/:review_id', (req, res) => {
+    requests['PATCH'][dbToUSe](req, res, client);
+  });
+
+  // router.put('/db/populate/seed/true/:amount', seed);
+
+  return router;
+};

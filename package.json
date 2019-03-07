@@ -10,7 +10,7 @@
     "start": "npm run serve-dev",
     "build": "webpack -r dotenv/config -p",
     "mongo": "node -r dotenv/config server/database/mongo.js",
-    "serve-dev": "nodemon -r dotenv/config server/index.js",
+    "serve-dev": "nodemon --inspect -r dotenv/config server/server.js",
     "test": "mocha"
   },
   "dependencies": {
@@ -25,6 +25,7 @@
     "faker": "^4.1.0",
     "jquery": "^3.3.1",
     "mongodb": "^3.1.13",
+    "morgan": "^1.9.1",
     "nodemon": "^1.18.10",
     "pg": "^7.8.1",
     "pg-promise": "^8.5.6",
