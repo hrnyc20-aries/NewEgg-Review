@@ -14,7 +14,7 @@ module.exports = (client) => {
     requests['POST'][dbToUSe](req, res, client);
   });
 
-  router.patch('/reviews/:review_id', (req, res, client) => {
+  router.patch('/reviews/:review_id', (req, res) => {
     requests['PATCH'][dbToUSe](req, res, client);
   });
 
