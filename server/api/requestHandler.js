@@ -3,10 +3,12 @@ const { ObjectID } = require('mongodb');
 
 module.exports = {
   GET: {
-    mongo: (req, res, client) => {
+    mongo: async (req, res, client) => {
       const { item_id } = req.params;
 
-      return client.db.find({ item_id: +item_id }).toArray((err, docs) => {
+      const reviews = await client.db.collection('reviews');
+
+      return reviews.find({ item_id: +item_id }).toArray((err, docs) => {
         !err ? res.send(docs) : res.status(400).send(err);
       });
     },
@@ -31,8 +33,11 @@ module.exports = {
   },
 
   POST: {
-    mongo: (req, res, client) => {
-      return client.db.insertMany([req.body], (err, { result }) => {
+    mongo: async (req, res, client) => {
+      const reviews = await client.db.collection('reviews');
+
+      return reviews.insertMany([req.body], (err, { result }) => {
+        // return client.db.insertMany([req.body], (err, { result }) => {
         !err
           ? res.send({ result, review: req.body })
           : res.status(400).send(err);
@@ -77,10 +82,13 @@ module.exports = {
   },
 
   PATCH: {
-    mongo: (req, res, client) => {
+    mongo: async (req, res, client) => {
       const { review_id } = req.params;
 
-      return client.db.findOneAndUpdate(
+      const reviews = await client.db.collection('reviews');
+
+      return reviews.findOneAndUpdate(
+        // return client.db.findOneAndUpdate(
         { _id: ObjectID(review_id) },
         { $set: req.body },
         { returnOriginal: false },

@@ -18,7 +18,17 @@ module.exports = (client) => {
     requests['PATCH'][dbToUSe](req, res, client);
   });
 
-  // router.put('/db/populate/seed/true/:amount', seed);
+  router.put('/db/populate/seed/true/:amount', async (req, res) => {
+    let { amount } = req.params;
+    if (+amount <= 10) {
+      res.send({
+        Mongo: 'Need to provide a value greater than or equal to 10'
+      });
+    } else {
+      await seed(client, amount);
+      res.send({ 'Mongo Seed': 'Complete' });
+    }
+  });
 
   return router;
 };
