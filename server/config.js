@@ -4,17 +4,23 @@ let path = require('path');
 let config = {};
 
 config.dbPath = path.resolve(__dirname, '../database/reviewdb.db');
-config.PORT = process.env.PORT || 3009;
 config.reviews = `localhost:${config.PORT}`;
+config.DBHOST = 'localhost';
 
 // Staging (default) environment
 config.development = {
-  reviews: `localhost:${config.PORT}`
+  reviews: `localhost:${config.PORT}`,
+  mongo: `${config.DBHOST}:${process.env.DBPORT}`,
+  DBNAME: process.env.DBNAME,
+  DBPORT: process.env.DBPORT || 27000
 };
 
 // Production environment
 config.production = {
-  reviews: `localhost${config.PORT}`
+  reviews: `localhost:${config.PORT}`,
+  mongo: `${process.env.DBHOST}:${config.PORT}`,
+  DBNAME: process.env.DBNAME,
+  DBPORT: process.env.DBPORT || 27000
 };
 
 // Determine which env should be passed

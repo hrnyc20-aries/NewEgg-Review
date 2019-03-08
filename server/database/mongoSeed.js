@@ -29,6 +29,10 @@ module.exports = async (client, total) => {
   } catch (error) {
     console.log('Collection Dropped');
   } finally {
+    memUsage('Starting Index =>');
+    await collection.createIndex('item_id');
+    memUsage('Created Index =>');
+
     let t0 = performance.now();
     memUsage('Heap Before Inserts =>');
 
@@ -44,8 +48,8 @@ module.exports = async (client, total) => {
     let seconds = Math.floor(((t1 - t0) / 1000) * 100) / 100;
     console.log(`Call to seed mongoDB took ${seconds} seconds`);
 
-    memUsage('Starting Index =>');
-    await reviews.createIndex('item_id');
-    memUsage('Created Index =>');
+    // memUsage('Starting Index =>');
+    // await reviews.createIndex('item_id');
+    // memUsage('Created Index =>');
   }
 };

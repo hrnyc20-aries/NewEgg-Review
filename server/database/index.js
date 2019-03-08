@@ -1,31 +1,34 @@
 require('dotenv').config();
 const MongoClient = require('mongodb').MongoClient;
-const pgp = require('pg-promise')({ capSQL: true });
+const config = require('../config');
+// const pgp = require('pg-promise')({ capSQL: true });
 
-const postgreSQLConnectionObject = {
-  host: process.env.PGHOST,
-  port: process.env.PGPORT,
-  database: process.env.PGDATABASE,
-  user: process.env.PGUSER,
-  password: process.env.PGPASSWORD
-};
+// const postgreSQLConnectionObject = {
+//   host: process.env.PGHOST,
+//   port: process.env.PGPORT,
+//   database: process.env.PGDATABASE,
+//   user: process.env.PGUSER,
+//   password: process.env.PGPASSWORD
+// };
 
-const HOST = process.env.MHOST;
-const PORT = process.env.MPORT;
-const DBNAME = process.env.MDBNAME;
-const mongoURL = `mongodb://${HOST}:${PORT}`;
+const mongoURL = `mongodb://${config.mongo}`;
 
 (async (Database) => {
   const dbs = {
     mongo: async () => {
-      const client = await MongoClient.connect(mongoURL, {
-        useNewUrlParser: true
-      });
+      try {
+        const client = await MongoClient.connect(mongoURL, {
+          useNewUrlParser: true
+        });
 
-      const db = await client.db(DBNAME);
-      if (db) console.log(`Connected to Database on port ${PORT}`);
+        const db = await client.db(config.DBNAME);
+        if (db) console.log(`Connected to Database on port ${config.DBPORT}`);
 
-      return db;
+        return db;
+      } catch (error) {
+        console.log('Could Not Connect to DB: Trying Again');
+        dbs.mongo();
+      }
     },
 
     postgre: async () => {
