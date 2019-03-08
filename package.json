@@ -7,25 +7,31 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "start": "npm run server-dev & npm run react-dev",
+    "start": "npm run serve-dev",
+    "build": "webpack -r dotenv/config -p",
+    "mongo": "node -r dotenv/config server/database/mongo.js",
+    "serve-dev": "nodemon --inspect -r dotenv/config server/server.js",
     "test": "mocha",
-    "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server/index.js",
-    "build-prod": "webpack -p --mode production"
+    "serve": "nodemon -r dotenv/config server/server.js"
   },
   "dependencies": {
+    "assert": "^1.4.1",
     "axios": "^0.18.0",
-    "body-parser": "^1.18.3",
     "bootstrap": "^4.2.1",
     "compression": "^1.7.3",
     "cors": "^2.8.5",
+    "css-webpack-plugin": "^1.0.2",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "jquery": "^3.3.1",
+    "mongodb": "^3.1.13",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.10",
+    "pg": "^7.8.1",
+    "pg-promise": "^8.5.6",
     "react": "^16.8.2",
-    "react-dom": "^16.8.2",
-    "sqlite3": "^4.0.6"
+    "react-dom": "^16.8.2"
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -39,7 +45,9 @@
     "chai-http": "^4.2.1",
     "compression-webpack-plugin": "^2.0.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
+    "html-webpack-plugin": "^3.2.0",
     "mocha": "^5.2.0",
+    "rimraf": "^2.6.3",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14"
