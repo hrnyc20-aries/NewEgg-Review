@@ -1,0 +1,1015 @@
+Started phase 0 (Warm Up), duration: 60s @ 16:57:37(-0500) 2019-03-09
+Report @ 16:57:47(-0500) 2019-03-09
+Elapsed time: 10 seconds
+  Scenarios launched:  9
+  Scenarios completed: 9
+  Requests completed:  9
+  RPS sent: 1.01
+  Request latency:
+    min: 2.7
+    max: 9
+    median: 3
+    p95: 9
+    p99: 9
+  Codes:
+    200: 9
+
+Report @ 16:57:57(-0500) 2019-03-09
+Elapsed time: 20 seconds
+  Scenarios launched:  10
+  Scenarios completed: 10
+  Requests completed:  10
+  RPS sent: 1
+  Request latency:
+    min: 2.7
+    max: 15.7
+    median: 3
+    p95: 15.7
+    p99: 15.7
+  Codes:
+    200: 10
+
+Report @ 16:58:07(-0500) 2019-03-09
+Elapsed time: 30 seconds
+  Scenarios launched:  10
+  Scenarios completed: 10
+  Requests completed:  10
+  RPS sent: 1
+  Request latency:
+    min: 2.4
+    max: 14.9
+    median: 2.8
+    p95: 14.9
+    p99: 14.9
+  Codes:
+    200: 10
+
+Report @ 16:58:17(-0500) 2019-03-09
+Elapsed time: 40 seconds
+  Scenarios launched:  10
+  Scenarios completed: 10
+  Requests completed:  10
+  RPS sent: 1
+  Request latency:
+    min: 2.6
+    max: 3.9
+    median: 2.9
+    p95: 3.9
+    p99: 3.9
+  Codes:
+    200: 10
+
+Report @ 16:58:27(-0500) 2019-03-09
+Elapsed time: 50 seconds
+  Scenarios launched:  10
+  Scenarios completed: 10
+  Requests completed:  10
+  RPS sent: 1
+  Request latency:
+    min: 2.4
+    max: 3.5
+    median: 2.6
+    p95: 3.5
+    p99: 3.5
+  Codes:
+    200: 10
+
+Report @ 16:58:37(-0500) 2019-03-09
+Elapsed time: 1 minute, 0 seconds
+  Scenarios launched:  10
+  Scenarios completed: 10
+  Requests completed:  10
+  RPS sent: 1
+  Request latency:
+    min: 2.5
+    max: 3.7
+    median: 2.6
+    p95: 3.7
+    p99: 3.7
+  Codes:
+    200: 10
+
+Started phase 1 (Mild Traffic), duration: 60s @ 16:58:37(-0500) 2019-03-09
+Report @ 16:58:47(-0500) 2019-03-09
+Elapsed time: 1 minute, 10 seconds
+  Scenarios launched:  100
+  Scenarios completed: 100
+  Requests completed:  100
+  RPS sent: 10.02
+  Request latency:
+    min: 2.4
+    max: 23.2
+    median: 2.9
+    p95: 5.8
+    p99: 19
+  Codes:
+    200: 100
+
+Report @ 16:58:57(-0500) 2019-03-09
+Elapsed time: 1 minute, 20 seconds
+  Scenarios launched:  100
+  Scenarios completed: 100
+  Requests completed:  100
+  RPS sent: 10.02
+  Request latency:
+    min: 2.4
+    max: 14.9
+    median: 2.8
+    p95: 4.4
+    p99: 14.7
+  Codes:
+    200: 100
+
+Report @ 16:59:07(-0500) 2019-03-09
+Elapsed time: 1 minute, 30 seconds
+  Scenarios launched:  100
+  Scenarios completed: 100
+  Requests completed:  100
+  RPS sent: 10.03
+  Request latency:
+    min: 2.3
+    max: 15.6
+    median: 2.9
+    p95: 6.4
+    p99: 15
+  Codes:
+    200: 100
+
+Report @ 16:59:17(-0500) 2019-03-09
+Elapsed time: 1 minute, 40 seconds
+  Scenarios launched:  100
+  Scenarios completed: 100
+  Requests completed:  100
+  RPS sent: 10.03
+  Request latency:
+    min: 2.4
+    max: 17.7
+    median: 2.8
+    p95: 5.1
+    p99: 16.3
+  Codes:
+    200: 100
+
+Report @ 16:59:27(-0500) 2019-03-09
+Elapsed time: 1 minute, 50 seconds
+  Scenarios launched:  100
+  Scenarios completed: 100
+  Requests completed:  100
+  RPS sent: 10.03
+  Request latency:
+    min: 2.3
+    max: 15.9
+    median: 2.8
+    p95: 5.4
+    p99: 11
+  Codes:
+    200: 100
+
+Report @ 16:59:37(-0500) 2019-03-09
+Elapsed time: 2 minutes, 0 seconds
+  Scenarios launched:  100
+  Scenarios completed: 100
+  Requests completed:  100
+  RPS sent: 10.02
+  Request latency:
+    min: 2.4
+    max: 5.9
+    median: 2.9
+    p95: 4.2
+    p99: 5.7
+  Codes:
+    200: 100
+
+Started phase 2 (Hmm, interesting Traffic), duration: 60s @ 16:59:37(-0500) 2019-03-09
+Report @ 16:59:47(-0500) 2019-03-09
+Elapsed time: 2 minutes, 10 seconds
+  Scenarios launched:  998
+  Scenarios completed: 997
+  Requests completed:  997
+  RPS sent: 100
+  Request latency:
+    min: 2.3
+    max: 56.9
+    median: 2.9
+    p95: 27.6
+    p99: 42.2
+  Codes:
+    200: 997
+
+Warning:
+CPU usage of Artillery seems to be very high (pids: 13392)
+which may severely affect its performance.
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 16:59:57(-0500) 2019-03-09
+Elapsed time: 2 minutes, 20 seconds
+  Scenarios launched:  1000
+  Scenarios completed: 1000
+  Requests completed:  1000
+  RPS sent: 100.3
+  Request latency:
+    min: 2.1
+    max: 104.8
+    median: 3
+    p95: 46.1
+    p99: 65.1
+  Codes:
+    200: 1000
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:00:07(-0500) 2019-03-09
+Elapsed time: 2 minutes, 30 seconds
+  Scenarios launched:  1000
+  Scenarios completed: 1000
+  Requests completed:  1000
+  RPS sent: 100.2
+  Request latency:
+    min: 2
+    max: 88.3
+    median: 2.9
+    p95: 53
+    p99: 69
+  Codes:
+    200: 1000
+
+Report @ 17:00:17(-0500) 2019-03-09
+Elapsed time: 2 minutes, 40 seconds
+  Scenarios launched:  1000
+  Scenarios completed: 1000
+  Requests completed:  1000
+  RPS sent: 100.1
+  Request latency:
+    min: 2.1
+    max: 58.3
+    median: 2.8
+    p95: 16.8
+    p99: 42.7
+  Codes:
+    200: 1000
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:00:27(-0500) 2019-03-09
+Elapsed time: 2 minutes, 50 seconds
+  Scenarios launched:  1000
+  Scenarios completed: 1000
+  Requests completed:  1000
+  RPS sent: 100.3
+  Request latency:
+    min: 2.2
+    max: 51.5
+    median: 2.7
+    p95: 18.4
+    p99: 41.2
+  Codes:
+    200: 1000
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:00:37(-0500) 2019-03-09
+Elapsed time: 3 minutes, 0 seconds
+  Scenarios launched:  1000
+  Scenarios completed: 1000
+  Requests completed:  1000
+  RPS sent: 100.1
+  Request latency:
+    min: 2
+    max: 59.8
+    median: 2.7
+    p95: 16.9
+    p99: 41.9
+  Codes:
+    200: 1000
+
+Started phase 3 (OMG, WAT!), duration: 60s @ 17:00:37(-0500) 2019-03-09
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:00:47(-0500) 2019-03-09
+Elapsed time: 3 minutes, 10 seconds
+  Scenarios launched:  1319
+  Scenarios completed: 1314
+  Requests completed:  1314
+  RPS sent: 132.06
+  Request latency:
+    min: 19.3
+    max: 327
+    median: 29.9
+    p95: 46.4
+    p99: 54.7
+  Codes:
+    200: 1314
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:00:57(-0500) 2019-03-09
+Elapsed time: 3 minutes, 20 seconds
+  Scenarios launched:  1498
+  Scenarios completed: 1498
+  Requests completed:  1498
+  RPS sent: 149.95
+  Request latency:
+    min: 18.4
+    max: 106.3
+    median: 27.4
+    p95: 39.7
+    p99: 53.5
+  Codes:
+    200: 1498
+
+Report @ 17:01:07(-0500) 2019-03-09
+Elapsed time: 3 minutes, 30 seconds
+  Scenarios launched:  1411
+  Scenarios completed: 1410
+  Requests completed:  1410
+  RPS sent: 141.52
+  Request latency:
+    min: 17.8
+    max: 108.9
+    median: 28.1
+    p95: 48.5
+    p99: 71
+  Codes:
+    200: 1410
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:01:17(-0500) 2019-03-09
+Elapsed time: 3 minutes, 40 seconds
+  Scenarios launched:  1471
+  Scenarios completed: 1472
+  Requests completed:  1472
+  RPS sent: 147.25
+  Request latency:
+    min: 18.6
+    max: 65.8
+    median: 28.1
+    p95: 40.7
+    p99: 50.4
+  Codes:
+    200: 1472
+
+Report @ 17:01:27(-0500) 2019-03-09
+Elapsed time: 3 minutes, 50 seconds
+  Scenarios launched:  1435
+  Scenarios completed: 1434
+  Requests completed:  1434
+  RPS sent: 143.93
+  Request latency:
+    min: 18.3
+    max: 100.7
+    median: 28.4
+    p95: 43.4
+    p99: 59.6
+  Codes:
+    200: 1434
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:01:37(-0500) 2019-03-09
+Elapsed time: 4 minutes, 0 seconds
+  Scenarios launched:  1505
+  Scenarios completed: 1506
+  Requests completed:  1506
+  RPS sent: 150.65
+  Request latency:
+    min: 18.5
+    max: 63.3
+    median: 27.3
+    p95: 40.6
+    p99: 50.2
+  Codes:
+    200: 1506
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:01:47(-0500) 2019-03-09
+Elapsed time: 4 minutes, 10 seconds
+  Scenarios launched:  1516
+  Scenarios completed: 1516
+  Requests completed:  1516
+  RPS sent: 151.75
+  Request latency:
+    min: 18.1
+    max: 67.8
+    median: 27.6
+    p95: 39.2
+    p99: 48.2
+  Codes:
+    200: 1516
+
+Report @ 17:01:57(-0500) 2019-03-09
+Elapsed time: 4 minutes, 20 seconds
+  Scenarios launched:  1464
+  Scenarios completed: 1464
+  Requests completed:  1464
+  RPS sent: 146.55
+  Request latency:
+    min: 19.1
+    max: 99.7
+    median: 28
+    p95: 41.8
+    p99: 53.5
+  Codes:
+    200: 1464
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:02:07(-0500) 2019-03-09
+Elapsed time: 4 minutes, 30 seconds
+  Scenarios launched:  1209
+  Scenarios completed: 1208
+  Requests completed:  1208
+  RPS sent: 121.02
+  Request latency:
+    min: 18.6
+    max: 122.4
+    median: 31.4
+    p95: 65.7
+    p99: 91.9
+  Codes:
+    200: 1208
+
+Report @ 17:02:17(-0500) 2019-03-09
+Elapsed time: 4 minutes, 40 seconds
+  Scenarios launched:  1420
+  Scenarios completed: 1421
+  Requests completed:  1421
+  RPS sent: 142
+  Request latency:
+    min: 18.1
+    max: 79.1
+    median: 28.2
+    p95: 46.2
+    p99: 54.7
+  Codes:
+    200: 1421
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:02:27(-0500) 2019-03-09
+Elapsed time: 4 minutes, 50 seconds
+  Scenarios launched:  1475
+  Scenarios completed: 1474
+  Requests completed:  1474
+  RPS sent: 147.94
+  Request latency:
+    min: 18.1
+    max: 81.6
+    median: 27.7
+    p95: 41
+    p99: 54.4
+  Codes:
+    200: 1474
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:02:37(-0500) 2019-03-09
+Elapsed time: 5 minutes, 0 seconds
+  Scenarios launched:  1527
+  Scenarios completed: 1528
+  Requests completed:  1528
+  RPS sent: 153.01
+  Request latency:
+    min: 17.9
+    max: 67.3
+    median: 27.2
+    p95: 39.7
+    p99: 55.3
+  Codes:
+    200: 1528
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:02:47(-0500) 2019-03-09
+Elapsed time: 5 minutes, 10 seconds
+  Scenarios launched:  1537
+  Scenarios completed: 1536
+  Requests completed:  1536
+  RPS sent: 154.01
+  Request latency:
+    min: 18.2
+    max: 69.6
+    median: 27
+    p95: 38.6
+    p99: 48.2
+  Codes:
+    200: 1536
+
+Report @ 17:02:57(-0500) 2019-03-09
+Elapsed time: 5 minutes, 20 seconds
+  Scenarios launched:  1290
+  Scenarios completed: 1290
+  Requests completed:  1290
+  RPS sent: 129.13
+  Request latency:
+    min: 18.5
+    max: 77.9
+    median: 32.2
+    p95: 48
+    p99: 57.7
+  Codes:
+    200: 1290
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:03:07(-0500) 2019-03-09
+Elapsed time: 5 minutes, 30 seconds
+  Scenarios launched:  1390
+  Scenarios completed: 1391
+  Requests completed:  1391
+  RPS sent: 139.28
+  Request latency:
+    min: 18.5
+    max: 93.2
+    median: 28.2
+    p95: 51.1
+    p99: 71.4
+  Codes:
+    200: 1391
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:03:17(-0500) 2019-03-09
+Elapsed time: 5 minutes, 40 seconds
+  Scenarios launched:  1492
+  Scenarios completed: 1491
+  Requests completed:  1491
+  RPS sent: 149.65
+  Request latency:
+    min: 18.2
+    max: 84.8
+    median: 27.5
+    p95: 41
+    p99: 54.8
+  Codes:
+    200: 1491
+
+Report @ 17:03:27(-0500) 2019-03-09
+Elapsed time: 5 minutes, 50 seconds
+  Scenarios launched:  1499
+  Scenarios completed: 1499
+  Requests completed:  1499
+  RPS sent: 150.2
+  Request latency:
+    min: 18.6
+    max: 77.6
+    median: 27.5
+    p95: 39.6
+    p99: 52.1
+  Codes:
+    200: 1499
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:03:37(-0500) 2019-03-09
+Elapsed time: 6 minutes, 0 seconds
+  Scenarios launched:  1519
+  Scenarios completed: 1520
+  Requests completed:  1520
+  RPS sent: 152.36
+  Request latency:
+    min: 18.1
+    max: 80.3
+    median: 27
+    p95: 39.4
+    p99: 53.9
+  Codes:
+    200: 1520
+
+Report @ 17:03:47(-0500) 2019-03-09
+Elapsed time: 6 minutes, 10 seconds
+  Scenarios launched:  1516
+  Scenarios completed: 1515
+  Requests completed:  1515
+  RPS sent: 151.75
+  Request latency:
+    min: 18.7
+    max: 75.5
+    median: 27.5
+    p95: 39
+    p99: 49
+  Codes:
+    200: 1515
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:03:57(-0500) 2019-03-09
+Elapsed time: 6 minutes, 20 seconds
+  Scenarios launched:  1505
+  Scenarios completed: 1506
+  Requests completed:  1506
+  RPS sent: 150.8
+  Request latency:
+    min: 17.8
+    max: 83.7
+    median: 27.5
+    p95: 39.9
+    p99: 52.4
+  Codes:
+    200: 1506
+
+Report @ 17:04:07(-0500) 2019-03-09
+Elapsed time: 6 minutes, 30 seconds
+  Scenarios launched:  1419
+  Scenarios completed: 1418
+  Requests completed:  1418
+  RPS sent: 142.18
+  Request latency:
+    min: 18.6
+    max: 89.6
+    median: 27.8
+    p95: 50.4
+    p99: 71.4
+  Codes:
+    200: 1418
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:04:17(-0500) 2019-03-09
+Elapsed time: 6 minutes, 40 seconds
+  Scenarios launched:  1483
+  Scenarios completed: 1484
+  Requests completed:  1484
+  RPS sent: 148.45
+  Request latency:
+    min: 18.6
+    max: 80.7
+    median: 27.7
+    p95: 41
+    p99: 56.4
+  Codes:
+    200: 1484
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:04:27(-0500) 2019-03-09
+Elapsed time: 6 minutes, 50 seconds
+  Scenarios launched:  1528
+  Scenarios completed: 1528
+  Requests completed:  1528
+  RPS sent: 152.95
+  Request latency:
+    min: 18.3
+    max: 76.5
+    median: 27.2
+    p95: 38.8
+    p99: 51.7
+  Codes:
+    200: 1528
+
+Report @ 17:04:37(-0500) 2019-03-09
+Elapsed time: 7 minutes, 0 seconds
+  Scenarios launched:  1512
+  Scenarios completed: 1511
+  Requests completed:  1511
+  RPS sent: 151.5
+  Request latency:
+    min: 18
+    max: 76.1
+    median: 27.6
+    p95: 39.4
+    p99: 50
+  Codes:
+    200: 1511
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:04:47(-0500) 2019-03-09
+Elapsed time: 7 minutes, 10 seconds
+  Scenarios launched:  1516
+  Scenarios completed: 1516
+  Requests completed:  1516
+  RPS sent: 151.75
+  Request latency:
+    min: 17.4
+    max: 91.9
+    median: 27.3
+    p95: 38.9
+    p99: 53.3
+  Codes:
+    200: 1516
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:04:57(-0500) 2019-03-09
+Elapsed time: 7 minutes, 20 seconds
+  Scenarios launched:  1481
+  Scenarios completed: 1482
+  Requests completed:  1482
+  RPS sent: 148.55
+  Request latency:
+    min: 18.6
+    max: 152.4
+    median: 27.5
+    p95: 39.7
+    p99: 69.8
+  Codes:
+    200: 1482
+
+Report @ 17:05:07(-0500) 2019-03-09
+Elapsed time: 7 minutes, 30 seconds
+  Scenarios launched:  1399
+  Scenarios completed: 1399
+  Requests completed:  1399
+  RPS sent: 140.18
+  Request latency:
+    min: 17.8
+    max: 93.7
+    median: 28
+    p95: 52.8
+    p99: 73.6
+  Codes:
+    200: 1399
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:05:17(-0500) 2019-03-09
+Elapsed time: 7 minutes, 40 seconds
+  Scenarios launched:  1159
+  Scenarios completed: 1158
+  Requests completed:  1158
+  RPS sent: 116.02
+  Request latency:
+    min: 18.8
+    max: 118.3
+    median: 32.2
+    p95: 64.4
+    p99: 90.7
+  Codes:
+    200: 1158
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:05:27(-0500) 2019-03-09
+Elapsed time: 7 minutes, 50 seconds
+  Scenarios launched:  1374
+  Scenarios completed: 1375
+  Requests completed:  1375
+  RPS sent: 137.68
+  Request latency:
+    min: 18.5
+    max: 76.6
+    median: 29.3
+    p95: 46.2
+    p99: 57.8
+  Codes:
+    200: 1375
+
+Report @ 17:05:37(-0500) 2019-03-09
+Elapsed time: 8 minutes, 0 seconds
+  Scenarios launched:  1517
+  Scenarios completed: 1516
+  Requests completed:  1516
+  RPS sent: 152
+  Request latency:
+    min: 18.8
+    max: 83.7
+    median: 27.4
+    p95: 39
+    p99: 53.2
+  Codes:
+    200: 1516
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:05:47(-0500) 2019-03-09
+Elapsed time: 8 minutes, 10 seconds
+  Scenarios launched:  1503
+  Scenarios completed: 1504
+  Requests completed:  1504
+  RPS sent: 150.6
+  Request latency:
+    min: 18.1
+    max: 70.3
+    median: 27.8
+    p95: 39.5
+    p99: 49.4
+  Codes:
+    200: 1504
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:05:57(-0500) 2019-03-09
+Elapsed time: 8 minutes, 20 seconds
+  Scenarios launched:  1502
+  Scenarios completed: 1502
+  Requests completed:  1502
+  RPS sent: 150.2
+  Request latency:
+    min: 18.7
+    max: 78.9
+    median: 27.7
+    p95: 39.9
+    p99: 51.6
+  Codes:
+    200: 1502
+
+Report @ 17:06:07(-0500) 2019-03-09
+Elapsed time: 8 minutes, 30 seconds
+  Scenarios launched:  1402
+  Scenarios completed: 1402
+  Requests completed:  1402
+  RPS sent: 140.62
+  Request latency:
+    min: 18.1
+    max: 100.6
+    median: 28.2
+    p95: 50.7
+    p99: 70.9
+  Codes:
+    200: 1402
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:06:17(-0500) 2019-03-09
+Elapsed time: 8 minutes, 40 seconds
+  Scenarios launched:  1499
+  Scenarios completed: 1498
+  Requests completed:  1498
+  RPS sent: 150.05
+  Request latency:
+    min: 18.1
+    max: 72.5
+    median: 27.7
+    p95: 40.3
+    p99: 51.6
+  Codes:
+    200: 1498
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:06:27(-0500) 2019-03-09
+Elapsed time: 8 minutes, 50 seconds
+  Scenarios launched:  1469
+  Scenarios completed: 1470
+  Requests completed:  1470
+  RPS sent: 147.19
+  Request latency:
+    min: 18.5
+    max: 76.9
+    median: 28.1
+    p95: 41.3
+    p99: 59.7
+  Codes:
+    200: 1470
+
+Report @ 17:06:37(-0500) 2019-03-09
+Elapsed time: 9 minutes, 0 seconds
+  Scenarios launched:  1473
+  Scenarios completed: 1472
+  Requests completed:  1472
+  RPS sent: 147.45
+  Request latency:
+    min: 18.5
+    max: 69.5
+    median: 27.9
+    p95: 41.7
+    p99: 51.3
+  Codes:
+    200: 1472
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:06:47(-0500) 2019-03-09
+Elapsed time: 9 minutes, 10 seconds
+  Scenarios launched:  1473
+  Scenarios completed: 1473
+  Requests completed:  1473
+  RPS sent: 147.6
+  Request latency:
+    min: 18.6
+    max: 73.2
+    median: 27.9
+    p95: 41.8
+    p99: 55.8
+  Codes:
+    200: 1473
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:06:57(-0500) 2019-03-09
+Elapsed time: 9 minutes, 20 seconds
+  Scenarios launched:  1341
+  Scenarios completed: 1342
+  Requests completed:  1342
+  RPS sent: 134.5
+  Request latency:
+    min: 19.6
+    max: 107.4
+    median: 30.1
+    p95: 46.6
+    p99: 67.5
+  Codes:
+    200: 1342
+
+Report @ 17:07:07(-0500) 2019-03-09
+Elapsed time: 9 minutes, 30 seconds
+  Scenarios launched:  1352
+  Scenarios completed: 1351
+  Requests completed:  1351
+  RPS sent: 135.47
+  Request latency:
+    min: 18.2
+    max: 128.9
+    median: 28.7
+    p95: 53.8
+    p99: 76.8
+  Codes:
+    200: 1351
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:07:17(-0500) 2019-03-09
+Elapsed time: 9 minutes, 40 seconds
+  Scenarios launched:  1486
+  Scenarios completed: 1486
+  Requests completed:  1486
+  RPS sent: 148.9
+  Request latency:
+    min: 18.1
+    max: 71.5
+    median: 27.6
+    p95: 40.7
+    p99: 55.2
+  Codes:
+    200: 1486
+
+Warning: High CPU usage warning (pids: 13392).
+See https://artillery.io/docs/faq/#high-cpu-warnings for details.
+
+Report @ 17:07:27(-0500) 2019-03-09
+Elapsed time: 9 minutes, 50 seconds
+  Scenarios launched:  1500
+  Scenarios completed: 1500
+  Requests completed:  1500
+  RPS sent: 150.3
+  Request latency:
+    min: 18
+    max: 80.5
+    median: 27.8
+    p95: 38.6
+    p99: 50.6
+  Codes:
+    200: 1500
+
+Report @ 17:07:32(-0500) 2019-03-09
+Elapsed time: 9 minutes, 55 seconds
+  Scenarios launched:  617
+  Scenarios completed: 624
+  Requests completed:  624
+  RPS sent: 131.42
+  Request latency:
+    min: 3.9
+    max: 68.6
+    median: 28.2
+    p95: 41.5
+    p99: 52.8
+  Codes:
+    200: 624
+
+All virtual users finished
+Summary report @ 17:07:32(-0500) 2019-03-09
+  Scenarios launched:  66660
+  Scenarios completed: 66660
+  Requests completed:  66660
+  RPS sent: 112.19
+  Request latency:
+    min: 2
+    max: 327
+    median: 27.4
+    p95: 43
+    p99: 61.2
+  Scenario counts:
+    0: 66660 (100%)
+  Codes:
+    200: 66660
