@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const requests = require('./requestHandler');
 const seed = require('../database/mongoSeed');
@@ -5,6 +6,15 @@ const dbToUSe = process.env.DATABASE_TO_USE || 'mongo';
 
 module.exports = (client) => {
   const router = express.Router();
+
+  router.get('/loaderio-e9089f08cb74e7859cecd2a5ed563632.txt', (req, res) => {
+    res.sendFile(
+      path.resolve(
+        __dirname,
+        '../../loaderio-e9089f08cb74e7859cecd2a5ed563632.txt'
+      )
+    );
+  });
 
   router.get('/reviews/:item_id', (req, res) => {
     requests['GET'][dbToUSe](req, res, client);
