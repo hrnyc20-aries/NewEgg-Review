@@ -18,7 +18,7 @@ config.development = {
 // Production environment
 config.production = {
   reviews: `localhost:${config.PORT}`,
-  mongo: `${process.env.DBHOST}:${config.PORT}`,
+  MONGO: `${process.env.DBHOST}:${config.DBPORT}`,
   DBNAME: process.env.DBNAME,
   DBPORT: process.env.DBPORT || 27000
 };
