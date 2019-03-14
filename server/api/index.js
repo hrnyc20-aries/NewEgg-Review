@@ -7,11 +7,7 @@ const dbToUSe = process.env.DATABASE_TO_USE || 'mongo';
 module.exports = (client) => {
   const router = express.Router();
 
-<<<<<<< HEAD
   router.get('/loaderio-e9089f08cb74e7859cecd2a5ed563632', (req, res) => {
-=======
-  router.get('/loaderio-e9089f08cb74e7859cecd2a5ed563632.txt', (req, res) => {
->>>>>>> 8e7ac2e4f6cd95a11c5b7189e76466576bad292a
     res.sendFile(
       path.resolve(
         __dirname,
