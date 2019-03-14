@@ -5,14 +5,15 @@ let config = {};
 
 config.dbPath = path.resolve(__dirname, '../database/reviewdb.db');
 config.reviews = `localhost:${config.PORT}`;
-config.DBHOST = 'localhost';
+config.DBHOST = process.env[`DB_HOST_${process.env.NODE_ENV.toUpperCase()}`];
+config.DBPORT = process.env[`DB_PORT_${process.env.NODE_ENV.toUpperCase()}`];
 
 // Staging (default) environment
 config.development = {
   reviews: `localhost:${config.PORT}`,
-  mongo: `${config.DBHOST}:${process.env.DBPORT}`,
+  mongo: `${config.DBHOST}:${config.DBPORT}`,
   DBNAME: process.env.DBNAME,
-  DBPORT: process.env.DBPORT || 27000
+  DBPORT: config.DBPORT || 27000
 };
 
 // Production environment
@@ -20,7 +21,7 @@ config.production = {
   reviews: `localhost:${config.PORT}`,
   MONGO: `${process.env.DBHOST}:${config.DBPORT}`,
   DBNAME: process.env.DBNAME,
-  DBPORT: process.env.DBPORT || 27000
+  DBPORT: config.DBPORT || 27000
 };
 
 // Determine which env should be passed
