@@ -12,9 +12,12 @@
     "mongo": "node -r dotenv/config server/database/mongo.js",
     "serve-dev": "nodemon --inspect -r dotenv/config server/server.js",
     "test": "mocha",
+    "art_dev": "artillery run ./test/artillery/dev.yaml",
+    "art_pro": "artillery run -e productionProxy ./test/artillery/dev.json",
     "serve": "nodemon -r dotenv/config server/server.js"
   },
   "dependencies": {
+    "artillery": "^1.6.0-27",
     "assert": "^1.4.1",
     "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
@@ -31,7 +34,8 @@
     "pg": "^7.8.1",
     "pg-promise": "^8.5.6",
     "react": "^16.8.2",
-    "react-dom": "^16.8.2"
+    "react-dom": "^16.8.2",
+    "response-time": "^2.3.2"
   },
   "devDependencies": {
     "babel": "^6.23.0",

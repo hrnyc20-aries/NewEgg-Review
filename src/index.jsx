@@ -5,8 +5,8 @@ import Overview from './components/overview.jsx';
 import Reviews from './components/reviews.jsx';
 import Blank from './components/blank.jsx';
 import $ from 'jquery';
-// import { reviews } from '../config.js';
-import { reviews } from '../server/config';
+import { production } from './config.js';
+// import { reviews } from '../server/config';
 
 class App extends React.Component {
   constructor(props) {
@@ -41,8 +41,8 @@ class App extends React.Component {
   getReviews() {
     let itemId = this.state.currentItem;
     axios
-      // .get(`${reviews}/reviews/${itemId}`)
-      .get(`/reviews/${itemId}`)
+      .get(`${production}/reviews/${itemId}`)
+      // .get(`/reviews/${itemId}`)
       .then((response) =>
         this.setState({ reviews: response.data }, () => {
           this.sortReviews(this.state.sortBy);
@@ -79,8 +79,11 @@ class App extends React.Component {
     votedItems.push(review.id);
     this.setState({ reviewsVotedOn: votedItems }, () => {
       axios
-        // .patch(`${reviews}/reviews`, { id: review.id, helpful: true })
-        .patch(`/reviews`, { id: review.id, helpful: true })
+        .patch(`${production}/reviews`, {
+          id: review.id,
+          helpful: true
+        })
+        // .patch(`/reviews`, { id: review.id, helpful: true })
         .then((response) => this.getReviews())
         .catch((err) => console.error('Could not process vote'));
     });
@@ -91,8 +94,8 @@ class App extends React.Component {
       reviewsVotedOn: this.state.reviewsVotedOn.push(review.id)
     });
     axios
-      .patch(`${reviews}/reviews`, { id: review.id, helpful: false })
-      .patch(`/reviews`, { id: review.id, helpful: false })
+      .patch(`${production}/reviews`, { id: review.id, helpful: false })
+      // .patch(`/reviews`, { id: review.id, helpful: false })
       .then((response) => this.getReviews())
       .catch((err) => console.error('Could not process vote'));
   }
