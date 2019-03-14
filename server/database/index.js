@@ -11,7 +11,7 @@ const config = require('../config');
 //   password: process.env.PGPASSWORD
 // };
 
-const mongoURL = `mongodb://${config.mongo}`;
+const mongoURL = `mongodb://${config.MONGO}`;
 
 (async (Database) => {
   const dbs = {
@@ -26,8 +26,9 @@ const mongoURL = `mongodb://${config.mongo}`;
 
         return db;
       } catch (error) {
-        console.log('Could Not Connect to DB: Trying Again');
-        dbs.mongo();
+        console.log('Could Not Connect to the DB: Trying Again');
+        // console.log(process.env);
+        // dbs.mongo();
       }
     },
 
