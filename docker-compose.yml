@@ -1,0 +1,14 @@
+app:
+  build: ./
+  volumes:
+    - ./:/var/www/app
+  ports:
+    - 3009:3009
+  environment:
+    - NODE_ENV=production
+    - PORT=3009
+  command: sh -c 'npm i && node server/server.js'
+  links:
+    - redis
+redis:
+  image: redis
