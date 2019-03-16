@@ -22,9 +22,11 @@ const mongoURL = `mongodb://${config.MONGO}`;
         });
 
         const db = await client.db(config.DBNAME);
-        if (db) console.log(`Connected to Database on port ${config.DBPORT}`);
+        const reviews = db.collection('reviews');
+        if (reviews)
+          console.log(`Connected to Database on port ${config.DBPORT}`);
 
-        return db;
+        return reviews;
       } catch (error) {
         console.log('Could Not Connect to the DB: Trying Again');
         // console.log(process.env);
