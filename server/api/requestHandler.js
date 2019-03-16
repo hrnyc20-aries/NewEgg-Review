@@ -1,15 +1,31 @@
 // const client = require('../database');
+const { createClient } = require('redis');
 const { ObjectID } = require('mongodb');
+const redis = createClient({ port: 6379 });
+const { Readable } = require('stream');
 
 module.exports = {
   GET: {
     mongo: async (req, res, client) => {
       const { item_id } = req.params;
 
-      const reviews = await client.db.collection('reviews');
+      redis.get(item_id, (err, reply) => {
+        if (!res.headersSent) {
+          if (err) throw err;
 
-      return reviews.find({ item_id: +item_id }).toArray((err, docs) => {
-        !err ? res.send(docs) : res.status(400).send(err);
+          if (reply) return res.send(JSON.parse(reply));
+        }
+      });
+
+      client.db.find({ item_id: +item_id }).toArray((err, docs) => {
+        if (!res.headersSent) {
+          if (err) {
+            res.status(400).send(err);
+          } else {
+            res.send(docs);
+            redis.set(item_id, JSON.stringify(docs));
+          }
+        }
       });
     },
 
