@@ -10,8 +10,8 @@ config.DBPORT = process.env[`DB_PORT_${process.env.NODE_ENV.toUpperCase()}`];
 
 // Staging (default) environment
 config.development = {
-  reviews: `localhost:${config.PORT}`,
-  mongo: `${config.DBHOST}:${config.DBPORT}`,
+  reviews: `localhost:${process.env.PORT}`,
+  MONGO: `${config.DBHOST}:${config.DBPORT}`,
   DBNAME: process.env.DBNAME,
   DBPORT: config.DBPORT || 27000
 };
